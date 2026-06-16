@@ -1432,33 +1432,6 @@ section { padding: 120px 0; position: relative; }
   margin-right: auto;
 }
 
-/* Email capture */
-.email-form {
-  max-width: 560px;
-  margin: 0 auto 48px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.email-form input {
-  flex: 1;
-  min-width: 240px;
-  padding: 18px 22px;
-  background: rgba(247, 243, 236, 0.06);
-  border: 1px solid rgba(247, 243, 236, 0.2);
-  color: var(--cream);
-  font-family: var(--font-body);
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  transition: all 0.3s;
-}
-.email-form input::placeholder { color: rgba(247, 243, 236, 0.5); }
-.email-form input:focus {
-  outline: none;
-  border-color: var(--gold);
-  background: rgba(247, 243, 236, 0.08);
-}
-
 .final-ctas {
   display: flex;
   gap: 16px;
@@ -1837,7 +1810,7 @@ footer {
       <a href="#mentors">Mentors</a>
       <a href="#receive">What You Get</a>
       <a href="#faq">FAQ</a>
-      <a href="#final" class="nav-cta">Start Your Journey</a>
+      <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="nav-cta">Start Your Journey</a>
     </div>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1852,7 +1825,7 @@ footer {
   <a href="#receive">What You Get</a>
   <a href="#testimonials">Testimonials</a>
   <a href="#faq">FAQ</a>
-  <a href="#final" class="btn btn-primary">Start Your Journey</a>
+  <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Start Your Journey</a>
 </div>
 
 <!-- ============== HERO ============== -->
@@ -1864,7 +1837,7 @@ footer {
   <div class="hero-content">
     <div class="hero-badge">
       <span class="dot"></span>
-      Founders Cohort Begins Monday, June 29
+      Founders Cohort Begins Monday, July 6
     </div>
 
     <h1>
@@ -2013,7 +1986,7 @@ footer {
         <span class="step">Path III.</span>
         <h3>Ready to build.</h3>
         <p>Enroll in THRIVE and get full access — 12 weeks of VIP coaching, frameworks, and execution support.</p>
-        <a href="https://thrive-checkout-flow-q3a0ufcsv-rudy-bailey-s-projects.vercel.app/" class="btn btn-primary" target="_blank">Enroll Now <span class="arrow">→</span></a>
+        <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Enroll Now <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -2354,14 +2327,11 @@ footer {
     <h2>You already have the <em>idea.</em><br/>Let's build the <em>plan.</em></h2>
     <p>Join the Founders Cohort. Twelve weeks of guided execution — and the structure to turn what you've been thinking about into something real.</p>
 
-    <form class="email-form" id="emailForm" onsubmit="handleEmailSubmit(event)">
-      <input type="email" placeholder="Enter your email to get started" required />
-      <button type="submit" class="btn btn-primary">Start My Journey <span class="arrow">→</span></button>
-    </form>
+    <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Start My Journey <span class="arrow">→</span></a>
 
     <div class="final-ctas">
       <a href="#masterclass" class="btn btn-secondary">Register Free Masterclass</a>
-      <a href="#resource" class="btn btn-secondary">Download Resource</a>
+      <a href="#" class="btn btn-secondary" onclick="openLeadMagnetPopup(event)">Download Resource</a>
     </div>
 
     <div class="final-countdown" id="finalCountdown">
@@ -2371,7 +2341,7 @@ footer {
       <div class="unit"><div class="num" id="fs">--</div><div class="lbl">Seconds</div></div>
     </div>
 
-    <div style="margin-top:24px;font-size:11px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;font-weight:600;">Founders Cohort Begins June 29</div>
+    <div style="margin-top:24px;font-size:11px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;font-weight:600;">Founders Cohort Begins July 6</div>
 
     <div class="founder-banner">
       <span class="num">10% Off</span>
@@ -2512,7 +2482,7 @@ footer {
     Founders Cohort
     <span>10% Off · Code THRIVE</span>
   </div>
-  <a href="#final" class="btn btn-primary">Start Your Journey</a>
+  <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Start Your Journey</a>
 </div>
 
 <!-- ============== EXIT POPUP ============== -->
@@ -2524,6 +2494,7 @@ footer {
     <p>Grab the FREE Idea Accelerator Resource, sent straight to your inbox.</p>
     <form class="form" onsubmit="handlePopupSubmit(event)">
       <input type="text" placeholder="First name" required />
+      <input type="text" placeholder="Last name" required />
       <input type="email" placeholder="Email address" required />
       <button type="submit" class="btn btn-dark" style="margin-top:8px;">Send Me the Resource <span class="arrow">→</span></button>
     </form>
@@ -2537,16 +2508,17 @@ footer {
     <button class="popup-close" id="leadMagnetClose">×</button>
     <div class="eyebrow">Free Resource</div>
     <h3>Get the <em>Idea Accelerator</em></h3>
-    <p>Enter your email and your free guide downloads instantly — no waiting, no fluff.</p>
+    <p>Enter your name and email and your free guide downloads instantly — no waiting, no fluff.</p>
     <form class="form" id="leadMagnetForm" onsubmit="handleLeadMagnetSubmit(event)">
-      <input type="text" id="leadMagnetName" placeholder="First name" required />
+      <input type="text" id="leadMagnetFirstName" placeholder="First name" autocomplete="given-name" required />
+      <input type="text" id="leadMagnetLastName" placeholder="Last name" autocomplete="family-name" required />
       <input type="email" id="leadMagnetEmail" placeholder="Email address" required />
       <button type="submit" class="btn btn-dark" style="margin-top:8px;" id="leadMagnetSubmitBtn">Send Me the Guide <span class="arrow">→</span></button>
     </form>
     <div id="leadMagnetSuccess" style="display:none; text-align:center; padding: 20px 0;">
       <div style="color: var(--gold); font-size: 2rem; margin-bottom: 12px;">✓</div>
-      <p style="color: var(--cream); font-weight: 600; margin-bottom: 8px;">You're in! Your download is starting now.</p>
-      <p style="color: rgba(247,243,236,0.7); font-size: 0.85rem;">Check your inbox — we sent a copy there too.</p>
+      <p style="color: var(--navy); font-weight: 600; margin-bottom: 8px;">You're in! Your download is ready.</p>
+      <a href="files/THRIVE_The_Next_Big_Idea-MVP.pdf" class="btn btn-dark" download="THRIVE_The_Next_Big_Idea-MVP.pdf">Download PDF <span class="arrow">→</span></a>
     </div>
   </div>
 </div>
@@ -2589,13 +2561,13 @@ const io = new IntersectionObserver((entries) => {
 reveals.forEach(el => io.observe(el));
 
 /* ============== COUNTDOWN ============== */
-// Target: Monday, June 29 of the current cohort year
+// Target: Monday, July 6 of the current cohort year
 function getCohortDate() {
   const now = new Date();
   let year = now.getFullYear();
-  let target = new Date(year, 5, 29, 9, 0, 0); // June = month 5
+  let target = new Date(year, 6, 6, 9, 0, 0); // July = month 6
   if (target < now) {
-    target = new Date(year + 1, 5, 29, 9, 0, 0);
+    target = new Date(year + 1, 6, 6, 9, 0, 0);
   }
   return target;
 }
@@ -2640,19 +2612,9 @@ function toggleFaq(el) {
   el.classList.toggle('open');
 }
 
-/* ============== EMAIL HANDLERS ============== */
-function handleEmailSubmit(e) {
-  e.preventDefault();
-  const email = e.target.querySelector('input').value;
-  alert(`Thanks! We'll send your next steps to ${email}. (Connect this form to your email platform — Kajabi, ConvertKit, Mailchimp, etc.)`);
-  e.target.reset();
-}
-
-/* handlePopupSubmit defined below */
-
 function openLeadPopup(e, type) {
   e.preventDefault();
-  document.getElementById('exitPopup').classList.add('visible');
+  document.getElementById('leadMagnetPopup').classList.add('visible');
 }
 
 /* ============== EXIT POPUP ============== */
@@ -2709,25 +2671,52 @@ function openLeadMagnetPopup(e) {
 
 /* leadMagnet listeners moved into DOMContentLoaded */
 
+function submitMailerLiteContact(firstName, lastName, email) {
+  const iframeName = 'mailerliteHiddenFrame';
+  let iframe = document.querySelector(`iframe[name="${iframeName}"]`);
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+    iframe.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(iframe);
+  }
+
+  const form = document.createElement('form');
+  form.action = 'https://assets.mailerlite.com/jsonp/2410569/forms/189469101875267486/subscribe';
+  form.method = 'post';
+  form.target = iframeName;
+  form.style.display = 'none';
+
+  [
+    ['fields[name]', firstName],
+    ['fields[last_name]', lastName],
+    ['fields[email]', email],
+    ['ml-submit', '1'],
+    ['anticsrf', 'true']
+  ].forEach(([name, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+  document.body.removeChild(form);
+}
+
 function handleLeadMagnetSubmit(e) {
   e.preventDefault();
-  const name = document.getElementById('leadMagnetName').value.trim();
+  const firstName = document.getElementById('leadMagnetFirstName').value.trim();
+  const lastName = document.getElementById('leadMagnetLastName').value.trim();
   const email = document.getElementById('leadMagnetEmail').value.trim();
   const btn = document.getElementById('leadMagnetSubmitBtn');
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  // Post to MailerLite
-  const formData = new FormData();
-  formData.append('fields[email]', email);
-  formData.append('fields[name]', name);
-  formData.append('ml-submit', '1');
-  formData.append('anticsrf', 'true');
-
-  fetch('https://assets.mailerlite.com/jsonp/2410569/forms/189469101875267486/subscribe', {
-    method: 'POST',
-    body: formData
-  }).catch(() => {}); // fire and forget — don't block PDF on network issues
+  submitMailerLiteContact(firstName, lastName, email);
 
   // Show success and trigger download simultaneously
   document.getElementById('leadMagnetForm').style.display = 'none';
@@ -2735,8 +2724,8 @@ function handleLeadMagnetSubmit(e) {
 
   // Trigger PDF download
   const link = document.createElement('a');
-  link.href = 'assets/THRIVE-Next-Big-Idea.pdf';
-  link.download = 'THRIVE-Next-Big-Idea.pdf';
+  link.href = 'files/THRIVE_The_Next_Big_Idea-MVP.pdf';
+  link.download = 'THRIVE_The_Next_Big_Idea-MVP.pdf';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -2749,7 +2738,7 @@ function handleLeadMagnetSubmit(e) {
       document.getElementById('leadMagnetForm').style.display = 'block';
       document.getElementById('leadMagnetSuccess').style.display = 'none';
       document.getElementById('leadMagnetForm').reset();
-      btn.textContent = 'Send Me the Guide →';
+      btn.innerHTML = 'Send Me the Guide <span class="arrow">→</span>';
       btn.disabled = false;
     }, 500);
   }, 3000);
@@ -2759,22 +2748,21 @@ function handleLeadMagnetSubmit(e) {
 function handlePopupSubmit(e) {
   e.preventDefault();
   const inputs = e.target.querySelectorAll('input');
-  const name = inputs[0].value.trim();
-  const email = inputs[1].value.trim();
+  const firstName = inputs[0].value.trim();
+  const lastName = inputs[1].value.trim();
+  const email = inputs[2].value.trim();
 
-  const formData = new FormData();
-  formData.append('fields[email]', email);
-  formData.append('fields[name]', name);
-  formData.append('ml-submit', '1');
-  formData.append('anticsrf', 'true');
+  submitMailerLiteContact(firstName, lastName, email);
 
-  fetch('https://assets.mailerlite.com/jsonp/2410569/forms/189469101875267486/subscribe', {
-    method: 'POST',
-    body: formData
-  }).catch(() => {});
+  // Show confirmation in exit popup and provide the PDF without leaving the page.
+  e.target.innerHTML = '<p style="color:var(--navy);text-align:center;padding:12px 0;font-weight:600;">✓ You\'re in! Your download is ready.</p><a href="files/THRIVE_The_Next_Big_Idea-MVP.pdf" class="btn btn-dark" download="THRIVE_The_Next_Big_Idea-MVP.pdf">Download PDF <span class="arrow">→</span></a>';
 
-  // Show confirmation in exit popup
-  e.target.innerHTML = '<p style="color:var(--cream);text-align:center;padding:12px 0;font-weight:600;">✓ You\'re on the list! Check your inbox.</p>';
+  const link = document.createElement('a');
+  link.href = 'files/THRIVE_The_Next_Big_Idea-MVP.pdf';
+  link.download = 'THRIVE_The_Next_Big_Idea-MVP.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
   setTimeout(() => {
     document.getElementById('exitPopup').classList.remove('visible');

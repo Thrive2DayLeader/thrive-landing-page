@@ -1,0 +1,3185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your Path · THRIVE Business Launch Accelerator™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Design Tokens (mirrored from main page) ── */
+:root {
+  --navy: #0B1A36;
+  --navy-deep: #060F22;
+  --navy-soft: #16254A;
+  --gold: #C9A961;
+  --gold-bright: #D8B872;
+  --gold-soft: #E5D3A3;
+  --cream: #F7F3EC;
+  --cream-warm: #EFE9DD;
+  --paper: #FAF7F2;
+  --charcoal: #0B1A36;
+  --gray: #6B6B72;
+  --gray-light: #C9C7C0;
+  --line: rgba(11,26,54,0.12);
+  --line-gold: rgba(201,169,97,0.3);
+  --font-display: 'Fraunces','Times New Roman',serif;
+  --font-body: 'Manrope',-apple-system,sans-serif;
+  --shadow-soft: 0 4px 30px rgba(11,26,54,0.06);
+  --shadow-med: 0 20px 60px rgba(11,26,54,0.12);
+  --shadow-deep: 0 30px 80px rgba(11,26,54,0.25);
+  --ease-smooth: cubic-bezier(0.22,1,0.36,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--charcoal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.2; }
+em { font-style: italic; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* ── Layout ── */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+section { padding: 96px 0; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+  white-space: nowrap;
+  background: none;
+}
+.btn .arrow { transition: transform 0.3s var(--ease-smooth); }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+.btn-primary:hover {
+  background: var(--navy);
+  color: var(--cream);
+  border-color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(11,26,54,0.25);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  border-color: rgba(247,243,236,0.4);
+}
+.btn-secondary:hover {
+  background: rgba(247,243,236,0.08);
+  border-color: rgba(247,243,236,0.7);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--navy);
+  border-color: rgba(11,26,54,0.25);
+}
+.btn-ghost:hover {
+  background: var(--navy);
+  color: var(--cream);
+  border-color: var(--navy);
+}
+.btn-gold-outline {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.btn-gold-outline:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+.btn-sm { padding: 12px 24px; font-size: 12px; }
+.btn-full { width: 100%; }
+
+/* ── Nav ── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  transition: background 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+  padding: 20px 0;
+}
+.nav.scrolled {
+  background: rgba(6,15,34,0.97);
+  backdrop-filter: blur(20px);
+  padding: 14px 0;
+  box-shadow: 0 1px 0 var(--line-gold);
+}
+.nav-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+.logo-mark span {
+  color: var(--navy);
+  font-size: 0.85rem;
+  font-weight: 800;
+  transform: rotate(-45deg);
+  letter-spacing: 0;
+}
+.logo-text { display: flex; flex-direction: column; line-height: 1; }
+.logo-tagline {
+  display: none;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
+  margin-top: 3px;
+}
+@media (min-width: 768px) { .logo-tagline { display: block; } }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-links a {
+  color: rgba(247,243,236,0.75);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links .nav-cta {
+  background: var(--gold);
+  color: var(--navy);
+  padding: 10px 22px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.nav-links .nav-cta:hover { background: var(--cream); color: var(--navy); }
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--cream);
+  transition: all 0.3s;
+}
+
+/* ── Hero ── */
+.enroll-hero {
+  background: var(--navy-deep);
+  padding: 160px 0 96px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.enroll-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,169,97,0.07) 0%, transparent 70%);
+}
+.enroll-hero .container { position: relative; }
+.enroll-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  color: var(--cream);
+  max-width: 780px;
+  margin: 0 auto 1.25rem;
+}
+.enroll-hero h1 em { color: var(--gold); }
+.enroll-hero .sub {
+  font-size: 1.05rem;
+  color: rgba(247,243,236,0.7);
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+.hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(201,169,97,0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.3s;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; }
+
+/* ── Quick Reinforcement ── */
+.section-reinforce {
+  background: var(--cream);
+  padding: 80px 0;
+  text-align: center;
+}
+.reinforce-body {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.reinforce-body p {
+  font-size: 1.12rem;
+  color: var(--charcoal);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.reinforce-body p:last-child { margin-bottom: 0; }
+.reinforce-body strong { color: var(--navy); font-weight: 700; }
+.reinforce-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 2.5rem;
+}
+
+/* ── Pricing Cards ── */
+.section-pricing {
+  background: var(--paper);
+  padding: 96px 0;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 56px;
+  align-items: start;
+}
+.pricing-card {
+  background: white;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  padding: 48px 40px;
+  position: relative;
+  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+}
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-med);
+}
+.pricing-card.featured {
+  background: var(--navy);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), var(--shadow-deep);
+}
+.popular-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  white-space: nowrap;
+}
+.card-tier {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  color: var(--navy);
+  margin-bottom: 0.25rem;
+}
+.pricing-card.featured .card-name { color: var(--cream); }
+.card-tagline {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+}
+.pricing-card.featured .card-tagline { color: rgba(247,243,236,0.6); }
+.price-block {
+  padding: 20px 0 20px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.pricing-card.featured .price-block {
+  border-color: rgba(201,169,97,0.2);
+}
+.price-regular {
+  font-size: 0.78rem;
+  color: var(--gray);
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+.pricing-card.featured .price-regular { color: rgba(247,243,236,0.4); }
+.price-main {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.pricing-card.featured .price-main { color: var(--gold); }
+.price-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201,169,97,0.1);
+  padding: 4px 10px;
+  display: inline-block;
+}
+.pricing-card.featured .price-tag {
+  background: rgba(201,169,97,0.15);
+}
+.best-for {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+.pricing-card.featured .best-for { color: rgba(247,243,236,0.5); }
+.best-for-text {
+  font-size: 0.92rem;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.pricing-card.featured .best-for-text { color: rgba(247,243,236,0.8); }
+.includes-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.includes-list {
+  list-style: none;
+  margin-bottom: 32px;
+}
+.includes-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--charcoal);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.5;
+}
+.includes-list li .item-title {
+  display: block;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.88rem;
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+.includes-list li .item-desc {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--gray);
+  line-height: 1.55;
+  font-weight: 400;
+}
+.includes-list li .item-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.pricing-card.featured .includes-list li {
+  color: rgba(247,243,236,0.85);
+  border-color: rgba(201,169,97,0.1);
+}
+.includes-list li::before {
+  content: '✦';
+  color: var(--gold);
+  font-size: 0.55rem;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.includes-list .plus-note {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  padding-top: 12px;
+}
+.includes-list .plus-note::before { content: none; }
+
+/* ── Decision Guide ── */
+.section-decision {
+  background: var(--cream-warm);
+  padding: 96px 0;
+}
+.decision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 56px;
+}
+.decision-card {
+  background: white;
+  padding: 40px 36px;
+  border: 1px solid var(--line);
+}
+.decision-card.premium {
+  background: var(--navy);
+  border-color: var(--line-gold);
+}
+.decision-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.decision-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+}
+.decision-card.premium .decision-title { color: var(--cream); }
+.decision-list {
+  list-style: none;
+}
+.decision-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--charcoal);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.5;
+}
+.decision-card.premium .decision-list li {
+  color: rgba(247,243,236,0.8);
+  border-color: rgba(201,169,97,0.12);
+}
+.decision-list li::before {
+  content: '→';
+  color: var(--gold);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Why Not YouTube ── */
+.section-compare {
+  background: var(--navy);
+  padding: 96px 0;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: 56px;
+  background: var(--line-gold);
+}
+.compare-item {
+  background: var(--navy-soft);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.compare-them {
+  font-size: 0.88rem;
+  color: rgba(247,243,236,0.45);
+  line-height: 1.5;
+}
+.compare-them strong { color: rgba(247,243,236,0.6); }
+.compare-us {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--cream);
+  line-height: 1.4;
+}
+.compare-us em { color: var(--gold); font-style: italic; }
+.compare-divider {
+  width: 32px;
+  height: 1px;
+  background: var(--line-gold);
+}
+
+/* ── Urgency / Fast Action ── */
+.section-urgency {
+  background: var(--cream);
+  padding: 96px 0;
+  text-align: center;
+}
+.urgency-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.urgency-inner h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.urgency-inner h2 em { color: var(--gold); }
+.urgency-inner > p {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+.urgency-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 3rem;
+}
+.urgency-card {
+  border: 1px solid var(--line);
+  padding: 32px 28px;
+  text-align: left;
+  background: white;
+}
+.urgency-card.featured { border-color: var(--gold); background: var(--navy); }
+.urgency-card-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.urgency-card-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.urgency-card.featured .urgency-card-name { color: var(--cream); }
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.price-was {
+  font-size: 0.85rem;
+  color: var(--gray);
+  text-decoration: line-through;
+}
+.urgency-card.featured .price-was { color: rgba(247,243,236,0.4); }
+.price-now {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--navy);
+  line-height: 1;
+}
+.urgency-card.featured .price-now { color: var(--gold); }
+.savings-note {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Scholarship ── */
+.section-scholarship {
+  background: var(--navy-deep);
+  padding: 112px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(201,169,97,0.2);
+  border-bottom: 1px solid rgba(201,169,97,0.2);
+}
+.section-scholarship::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,169,97,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,169,97,0.05) 0%, transparent 60%);
+}
+.section-scholarship::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%, transparent 100%);
+}
+.scholarship-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.scholarship-inner h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+.scholarship-inner h2 em { color: var(--gold); }
+.scholarship-stopper {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: var(--gold);
+  text-align: center;
+  line-height: 1.5;
+  padding: 28px 24px;
+  margin: 2rem 0 2.5rem;
+  border-top: 1px solid rgba(201,169,97,0.2);
+  border-bottom: 1px solid rgba(201,169,97,0.2);
+  position: relative;
+}
+.scholarship-stopper::before,
+.scholarship-stopper::after {
+  content: '✦';
+  display: block;
+  color: rgba(201,169,97,0.3);
+  font-size: 0.6rem;
+  font-style: normal;
+  margin: 0 auto;
+  letter-spacing: 0;
+}
+.scholarship-stopper::before { margin-bottom: 10px; }
+.scholarship-stopper::after { margin-top: 10px; }
+.scholarship-sig-wrap {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(201,169,97,0.15);
+  text-align: right;
+}
+
+.scholarship-story {
+  text-align: left;
+  background: rgba(247,243,236,0.04);
+  border-left: 2px solid var(--gold);
+  padding: 32px 36px;
+  margin: 2.5rem 0;
+}
+.scholarship-story p {
+  font-size: 0.97rem;
+  color: rgba(247,243,236,0.8);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+.scholarship-story p:last-child { margin-bottom: 0; }
+.scholarship-quote {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--gold);
+  text-align: center;
+  margin: 2rem 0;
+  line-height: 1.5;
+}
+.scholarship-sub {
+  font-size: 0.95rem;
+  color: rgba(247,243,236,0.65);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+/* ── FAQ ── */
+.section-faq {
+  background: var(--paper);
+  padding: 96px 0;
+}
+.faq-list {
+  max-width: 760px;
+  margin: 56px auto 0;
+}
+.faq-item {
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.faq-item:first-child { border-top: 1px solid var(--line); }
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--navy);
+  gap: 24px;
+  user-select: none;
+}
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--line-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 1rem;
+  transition: transform 0.3s var(--ease-smooth);
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s var(--ease-smooth), padding 0.3s;
+}
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a p {
+  font-size: 0.92rem;
+  color: var(--gray);
+  line-height: 1.8;
+  padding-bottom: 22px;
+}
+
+/* ── Final CTA ── */
+.section-final-cta {
+  background: var(--navy);
+  padding: 96px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.section-final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,169,97,0.07) 0%, transparent 70%);
+}
+.section-final-cta .container { position: relative; }
+.section-final-cta h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+.section-final-cta h2 em { color: var(--gold); }
+.section-final-cta p {
+  font-size: 1rem;
+  color: rgba(247,243,236,0.65);
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+.final-btn-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* ── Sticky CTA ── */
+.sticky-enroll {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: var(--navy-deep);
+  border: 1px solid var(--line-gold);
+  box-shadow: var(--shadow-deep);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  z-index: 900;
+  transition: transform 0.5s var(--ease-smooth);
+  white-space: nowrap;
+}
+.sticky-enroll.visible { transform: translateX(-50%) translateY(0); }
+.sticky-enroll .sticky-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247,243,236,0.6);
+}
+.sticky-enroll .sticky-label span {
+  display: block;
+  color: var(--gold);
+  font-size: 0.65rem;
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--navy-deep);
+  border-top: 1px solid var(--line-gold);
+}
+.footer-inner { max-width: 1160px; margin: 0 auto; padding: 64px 32px 40px; }
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(201,169,97,0.15);
+}
+.footer-brand .logo { margin-bottom: 16px; display: inline-flex; }
+.footer-brand p {
+  font-size: 0.85rem;
+  color: rgba(247,243,236,0.45);
+  line-height: 1.7;
+}
+.footer-col h5 {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.footer-col a {
+  display: block;
+  color: rgba(247,243,236,0.5);
+  text-decoration: none;
+  font-size: 0.83rem;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  font-size: 0.75rem;
+  color: rgba(247,243,236,0.3);
+}
+.footer-bottom .signature {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(201,169,97,0.4);
+}
+
+/* ── Built for Busy Callout ── */
+.busy-callout {
+  background: rgba(201,169,97,0.07);
+  border: 1px solid rgba(201,169,97,0.25);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin: 20px 0 24px;
+}
+.busy-callout-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.busy-callout p {
+  font-size: 0.82rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin: 0;
+}
+.section-intro-note {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-style: italic;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+
+/* ── Founder Quote Block (Premium Card) ── */
+.founder-quote-block {
+  margin-top: 28px;
+  border-top: 1px solid rgba(201,169,97,0.2);
+  padding-top: 24px;
+  text-align: center;
+}
+.founder-quote-mark {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--gold);
+  opacity: 0.4;
+  line-height: 0.6;
+  margin-bottom: 12px;
+}
+.founder-quote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(247,243,236,0.85);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  padding: 0 8px;
+}
+.founder-quote-sigs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.founder-quote-sig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.founder-sig-name {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.06em;
+}
+.founder-sig-role {
+  font-size: 0.68rem;
+  color: rgba(201,169,97,0.65);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.founder-quote-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(201,169,97,0.25);
+  flex-shrink: 0;
+}
+
+/* ── What Happens After You Enroll ── */
+.enroll-steps {
+  margin-top: 28px;
+  border-top: 1px solid rgba(201,169,97,0.2);
+  padding-top: 24px;
+}
+.enroll-steps-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.enroll-steps-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(201,169,97,0.2);
+}
+.enroll-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(201,169,97,0.1);
+}
+.enroll-step:last-child { border-bottom: none; padding-bottom: 0; }
+.enroll-step-num {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--gold);
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  letter-spacing: 0;
+}
+.enroll-step-body { display: flex; flex-direction: column; gap: 2px; }
+.enroll-step-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.3;
+}
+.enroll-step-desc {
+  font-size: 0.78rem;
+  color: rgba(247,243,236,0.5);
+  line-height: 1.5;
+}
+
+/* ── Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Section headers ── */
+.section-head { margin-bottom: 0; }
+.section-head h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.section-head h2 em { color: var(--gold); }
+.section-head p {
+  font-size: 1rem;
+  color: var(--gray);
+  max-width: 560px;
+  line-height: 1.7;
+}
+.section-head.light h2 { color: var(--cream); }
+.section-head.light p { color: rgba(247,243,236,0.6); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .pricing-grid,
+  .decision-grid,
+  .compare-grid,
+  .urgency-cards,
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .mobile-toggle { display: flex; }
+  .nav-links { display: none; }
+  section { padding: 72px 0; }
+}
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .footer-top { grid-template-columns: 1fr; }
+  .hero-btns, .final-btn-grid { flex-direction: column; align-items: center; }
+  .sticky-enroll { flex-direction: column; gap: 10px; padding: 14px 16px; }
+  .enroll-hero { padding: 130px 0 72px; }
+}
+
+/* ── Scholarship / Founder Note ── */
+.founder-note-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.founder-photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.founder-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  object-position: center top;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 0 0 4px rgba(201,169,97,0.15);
+}
+.founder-name-note {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247,243,236,0.6);
+}
+.founder-signature {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.4rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-top: 2px;
+}
+.founders-duo {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.founder-duo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.founder-duo-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  object-position: center top;
+  box-shadow: 0 0 0 4px rgba(201,169,97,0.12);
+}
+.founder-duo-name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  text-align: center;
+}
+.founder-duo-role {
+  font-size: 0.7rem;
+  color: rgba(247,243,236,0.5);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+.founders-together-line {
+  font-size: 0.88rem;
+  color: rgba(247,243,236,0.6);
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── Side-by-Side Comparison Section ── */
+.section-comparison {
+  background: var(--navy);
+  padding: 0 0 96px;
+}
+.comparison-intro {
+  text-align: center;
+  padding: 64px 0 48px;
+  border-bottom: 1px solid rgba(201,169,97,0.15);
+  margin-bottom: 56px;
+}
+.comparison-intro h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.comparison-intro h3 em { color: var(--gold); }
+.comparison-intro p {
+  font-size: 0.92rem;
+  color: rgba(247,243,236,0.5);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.comparison-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.comp-card {
+  background: var(--navy-soft);
+  border: 1px solid rgba(201,169,97,0.15);
+}
+.comp-card.premium-col {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(201,169,97,0.3), 0 20px 60px rgba(11,26,54,0.4);
+}
+.comp-header {
+  padding: 28px 28px 24px;
+  border-bottom: 1px solid rgba(201,169,97,0.15);
+  text-align: center;
+}
+.comp-tier-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.comp-tier-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--cream);
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+.comp-value-anchor {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201,169,97,0.1);
+  border: 1px solid rgba(201,169,97,0.2);
+  padding: 5px 14px;
+  margin-bottom: 10px;
+}
+.comp-price {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.comp-price-note {
+  font-size: 0.72rem;
+  color: rgba(247,243,236,0.4);
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+.comp-header .btn {
+  width: 100%;
+  font-size: 11px;
+  padding: 13px 20px;
+}
+.comp-section-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(201,169,97,0.5);
+  padding: 16px 28px 8px;
+  background: rgba(201,169,97,0.04);
+  border-bottom: 1px solid rgba(201,169,97,0.08);
+}
+.comp-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 28px;
+  border-bottom: 1px solid rgba(201,169,97,0.07);
+  transition: background 0.2s;
+}
+.comp-row:hover { background: rgba(201,169,97,0.03); }
+.comp-row:last-child { border-bottom: none; }
+.comp-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+.comp-check.yes {
+  background: rgba(201,169,97,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(201,169,97,0.3);
+}
+.comp-check.no {
+  background: rgba(220,50,50,0.1);
+  color: #e05555;
+  border: 1px solid rgba(220,50,50,0.25);
+  font-size: 0.8rem;
+}
+.comp-row-text {
+  font-size: 0.85rem;
+  color: rgba(247,243,236,0.75);
+  line-height: 1.45;
+  flex: 1;
+}
+.comp-row-text strong {
+  display: block;
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 0.87rem;
+  margin-bottom: 1px;
+}
+.comp-row-text.dimmed strong { color: rgba(247,243,236,0.35); }
+.comp-row-text.dimmed { color: rgba(247,243,236,0.25); }
+.comp-badge {
+  display: inline-block;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  padding: 2px 7px;
+  margin-left: 6px;
+  vertical-align: middle;
+  line-height: 1.6;
+}
+.comp-footer {
+  padding: 24px 28px;
+  border-top: 1px solid rgba(201,169,97,0.15);
+}
+.comp-footer .btn { width: 100%; font-size: 11px; padding: 13px 20px; }
+
+@media (max-width: 768px) {
+  .comparison-cards { grid-template-columns: 1fr; }
+  .comp-card.premium-col { order: -1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><span>T</span></span>
+      <span class="logo-text">
+        THRIVE2DAY™
+        <span class="logo-tagline">Stop Waiting. Start Thriving.</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#compare">Compare Plans</a>
+      <a href="#decide">Help Me Decide</a>
+      <a href="#scholarship">Scholarship</a>
+      <a href="#final-cta" class="nav-cta">Enroll Now</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="enroll-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">Back to the Program</a>
+    <div class="eyebrow" style="justify-content:center; display:inline-flex;">Choose Your Path</div>
+    <h1>Choose the THRIVE Path That Fits <em>Your Season.</em></h1>
+    <p class="sub">Whether you're ready to launch with step-by-step guidance or want the full coaching and accountability experience, THRIVE gives you a proven business launch system built for real people with real responsibilities.</p>
+    <div class="hero-btns">
+      <a href="#essentials" class="btn btn-secondary">THRIVE Essentials™ — $997 <span class="arrow">→</span></a>
+      <a href="#premium" class="btn btn-primary">THRIVE Premium™ — $2,997 <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== QUICK REINFORCEMENT ============== -->
+<section class="section-reinforce" id="reinforce">
+  <div class="container">
+    <div class="reinforce-body">
+      <div class="eyebrow" style="justify-content:center; display:inline-flex;">Where You Are Right Now</div>
+      <div class="reinforce-divider"></div>
+      <p>You don't need another random video, another saved idea, or another year of waiting.</p>
+      <p>You need <strong>a clear path, practical tools, and the right level of support</strong> for where you are right now.</p>
+      <p>That is why THRIVE gives you two ways to begin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PRICING ============== -->
+<section class="section-pricing" id="options">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Enrollment Options</div>
+      <h2>Two Paths. One <em>Proven System.</em></h2>
+      <p>Both options give you the complete THRIVE framework. Choose the level of support that fits your season.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Essentials -->
+      <div class="pricing-card reveal" id="essentials">
+        <div class="card-tier">THRIVE Essentials™</div>
+        <div class="card-name">Essentials</div>
+        <div class="card-tagline">The complete business launch system for self-motivated builders.</div>
+        <div class="price-block">
+          <div class="price-regular">Regular Price: $997</div>
+          <div class="price-main">$897</div>
+          <div class="price-tag">Fast Action — 10% Off</div>
+        </div>
+        <div class="best-for">Best For</div>
+        <div class="best-for-text">Self-starters who want the complete business launch system and are ready to implement independently.</div>
+        <div class="includes-label">What's Included</div>
+        <p class="section-intro-note">Everything inside THRIVE Essentials™ is designed around one goal: helping you launch faster, avoid costly mistakes, and accelerate your journey from idea to income.</p>
+        <ul class="includes-list">
+          <li><span class="item-wrap"><span class="item-title">Complete THRIVE Business Launch Accelerator™ System</span><span class="item-desc">The complete roadmap designed to help you move from idea to launch.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">19 Focused Business Launch Modules</span><span class="item-desc">Action-oriented lessons designed for busy professionals and aspiring entrepreneurs.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">19 Business Launch Playbooks</span><span class="item-desc">Quick-reference guides packed with frameworks, insights, examples, and implementation tools.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">Dual-Format Learning Experience</span><span class="item-desc">Watch on your desktop or listen on the go through audio lessons.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">75 Ready-to-Launch Business Ideas Resource Library</span><span class="item-desc">Pre-vetted business ideas designed to eliminate idea overwhelm.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">Done-For-You Business Templates</span><span class="item-desc">Ready-to-use templates that save time and reduce guesswork.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">Plug-and-Play Business Frameworks</span><span class="item-desc">Proven systems you can customize rather than build from scratch.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">Business Startup Toolkit</span><span class="item-desc">Step-by-step guidance for forming and launching your business.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">AI-Powered Entrepreneur Toolkit</span><span class="item-desc">Leverage AI to accelerate productivity, marketing, and business growth.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">Market Research &amp; Validation Toolkit</span><span class="item-desc">Learn how to validate demand before building your offer.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">MVP Launch Blueprint</span><span class="item-desc">Build, test, and refine your first offer with confidence.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">SOP Legacy System</span><span class="item-desc">Create repeatable processes that support long-term growth.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">30-Day Business Launch Roadmap</span><span class="item-desc">A practical action plan designed to accelerate implementation.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">Lifetime Access</span><span class="item-desc">Return to the training and resources whenever you need them.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title">Future Content &amp; Resource Updates</span><span class="item-desc">Receive new tools, resources, and enhancements as THRIVE evolves.</span></span></li>
+        </ul>
+        <div class="busy-callout">
+          <div class="busy-callout-label">Built for Busy Professionals</div>
+          <p>THRIVE was intentionally designed for people balancing careers, families, responsibilities, and limited time. The focused lesson structure, business launch playbooks, dual-format learning experience, ready-to-use templates, frameworks, and implementation tools help accelerate progress without requiring you to spend hundreds of hours trying to figure everything out on your own.</p>
+        </div>
+        <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost btn-full">Enroll in Essentials <span class="arrow">→</span></a>
+      </div>
+
+      <!-- Premium -->
+      <div class="pricing-card featured reveal" id="premium">
+        <div class="popular-badge">Most Popular · Best Value</div>
+        <div class="card-tier">THRIVE Premium™</div>
+        <div class="card-name" style="color:var(--cream)">Premium</div>
+        <div class="card-tagline">Full coaching, accountability, community, and support while you launch.</div>
+        <div class="price-block">
+          <div class="price-regular" style="color:rgba(247,243,236,0.35)">Regular Price: $2,997</div>
+          <div class="price-main">$2,695</div>
+          <div class="price-tag">Fast Action — 10% Off</div>
+        </div>
+        <div class="best-for">Best For</div>
+        <div class="best-for-text">Entrepreneurs who want coaching, accountability, feedback, community, and support while launching.</div>
+        <div class="includes-label">Everything in Essentials, Plus</div>
+        <ul class="includes-list">
+          <li class="plus-note">✦ All THRIVE Essentials™ Features Included</li>
+          <li><span class="item-wrap"><span class="item-title" style="color:var(--cream);">12 Weeks of VIP Group Coaching</span><span class="item-desc" style="color:rgba(247,243,236,0.55);">Weekly live sessions for guidance, feedback, Q&amp;A, and implementation support throughout your launch journey.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title" style="color:var(--cream);">Private THRIVE Founder Community</span><span class="item-desc" style="color:rgba(247,243,236,0.55);">Connect with fellow entrepreneurs and builders who are taking action alongside you.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title" style="color:var(--cream);">Momentum &amp; Accountability System</span><span class="item-desc" style="color:rgba(247,243,236,0.55);">Built-in accountability to keep you focused, consistent, and moving forward.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title" style="color:var(--cream);">VIP Coach &amp; Mentor Support</span><span class="item-desc" style="color:rgba(247,243,236,0.55);">Submit questions and roadblocks for discussion during coaching sessions and office hours.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title" style="color:var(--cream);">THRIVE Resource Network</span><span class="item-desc" style="color:rgba(247,243,236,0.55);">Access trusted business resources, service providers, investors, and startup-support specialists. <em style="font-size:0.8em;opacity:0.7;">Third-party fees may apply.</em></span></span></li>
+          <li><span class="item-wrap"><span class="item-title" style="color:var(--cream);">Business Visibility Opportunities</span><span class="item-desc" style="color:rgba(247,243,236,0.55);">Gain visibility, strategic connections, and business exposure within the THRIVE ecosystem.</span></span></li>
+          <li><span class="item-wrap"><span class="item-title" style="color:var(--cream);">Complimentary Starter Website</span><span class="item-desc" style="color:rgba(247,243,236,0.55);">A professionally designed starter website to establish your online presence. <em style="font-size:0.8em;opacity:0.7;">Subject to eligibility requirements.</em></span></span></li>
+          <li><span class="item-wrap"><span class="item-title" style="color:var(--cream);">Launch Readiness Review</span><span class="item-desc" style="color:rgba(247,243,236,0.55);">Ensure your offer, foundation, and launch plan are positioned for success before you go live.</span></span></li>
+        </ul>
+        <div class="busy-callout" style="background:rgba(201,169,97,0.07);border-color:rgba(201,169,97,0.3);border-left-color:var(--gold);">
+          <div class="busy-callout-label">The Difference Is Not More Information.</div>
+          <p style="color:rgba(247,243,236,0.65);">The difference is support. THRIVE Premium™ is designed for entrepreneurs who want coaching, accountability, community, trusted resources, and experienced guidance while building their business. You do not have to build alone.</p>
+        </div>
+        <div class="enroll-steps">
+          <div class="enroll-steps-label">What Happens After You Enroll</div>
+          <div class="enroll-step">
+            <div class="enroll-step-num">1</div>
+            <div class="enroll-step-body">
+              <div class="enroll-step-title">Access Your THRIVE Portal</div>
+              <div class="enroll-step-desc">Instant access to your full curriculum, tools, playbooks, and resources — ready when you are.</div>
+            </div>
+          </div>
+          <div class="enroll-step">
+            <div class="enroll-step-num">2</div>
+            <div class="enroll-step-body">
+              <div class="enroll-step-title">Join the Private Community</div>
+              <div class="enroll-step-desc">Connect with your cohort, meet your coaches, and get oriented inside the THRIVE Founder Community.</div>
+            </div>
+          </div>
+          <div class="enroll-step">
+            <div class="enroll-step-num">3</div>
+            <div class="enroll-step-body">
+              <div class="enroll-step-title">Attend Your First Coaching Call</div>
+              <div class="enroll-step-desc">Get live guidance, meet your fellow builders, and take your first real step toward launch. The journey begins here.</div>
+            </div>
+          </div>
+        </div>
+        <div class="founder-quote-block">
+          <div class="founder-quote-mark">"</div>
+          <p class="founder-quote-text">This is the program we wish we had when we first started. We built it so you don't have to figure it out alone.</p>
+          <div class="founder-quote-sigs">
+            <div class="founder-quote-sig">
+              <span class="founder-sig-name">Rudy Bailey, MBA</span>
+              <span class="founder-sig-role">Founder · THRIVE</span>
+            </div>
+            <div class="founder-quote-divider"></div>
+            <div class="founder-quote-sig">
+              <span class="founder-sig-name">Crystal Lugo</span>
+              <span class="founder-sig-role">Co-Founder · THRIVE</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary btn-full" style="margin-top:28px;">Enroll in Premium <span class="arrow">→</span></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== DECISION GUIDE ============== -->
+<section class="section-decision" id="decide">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Not Sure?</div>
+      <h2>Which Option Is <em>Right for You?</em></h2>
+      <p>Both paths lead to the same destination. The difference is how much support you want along the way.</p>
+    </div>
+
+    <div class="decision-grid">
+      <div class="decision-card reveal">
+        <div class="decision-label">Choose This If</div>
+        <div class="decision-title">THRIVE Essentials™</div>
+        <ul class="decision-list">
+          <li>You are self-motivated and disciplined</li>
+          <li>You prefer to work at your own pace independently</li>
+          <li>You want the full framework and all the tools</li>
+          <li>You are comfortable implementing without direct coaching</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost btn-sm">Enroll in Essentials <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="decision-card premium reveal">
+        <div class="decision-label">Choose This If</div>
+        <div class="decision-title">THRIVE Premium™</div>
+        <ul class="decision-list">
+          <li>You want accountability to keep you moving forward</li>
+          <li>You value coaching, feedback, and real-time support</li>
+          <li>You want community and mentor access</li>
+          <li>You want help staying focused through the launch process</li>
+          <li>You want the best chance of completing and launching</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary btn-sm">Enroll in Premium <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:3rem;" class="reveal">
+      <p style="font-size:0.9rem; color:var(--gray); margin-bottom:1.25rem;">Still not sure? Book a quick 15-minute call and we'll help you decide.</p>
+      <a href="https://calendly.com/rudybaileyjr/15-minute-clarity-call" class="btn btn-gold-outline">Schedule a Clarity Call <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHY NOT YOUTUBE + COMPARISON ============== -->
+<section class="section-compare section-comparison" id="compare">
+  <div class="container">
+    <div class="section-head light reveal" style="padding-top:96px;">
+      <div class="eyebrow">Why THRIVE Is Different</div>
+      <h2>The Honest <em>Comparison.</em></h2>
+      <p style="color:rgba(247,243,236,0.55)">Free content is everywhere. What's rare is a path that actually takes you from idea to launch.</p>
+    </div>
+
+    <div class="compare-grid reveal">
+      <div class="compare-item">
+        <div class="compare-them"><strong>YouTube</strong> gives you information.</div>
+        <div class="compare-divider"></div>
+        <div class="compare-us">THRIVE gives you <em>sequence.</em></div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-them"><strong>AI</strong> gives you answers.</div>
+        <div class="compare-divider"></div>
+        <div class="compare-us">THRIVE gives you <em>structure.</em></div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-them"><strong>Free content</strong> gives you options.</div>
+        <div class="compare-divider"></div>
+        <div class="compare-us">THRIVE gives you <em>implementation.</em></div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-them"><strong>Random advice</strong> gives you ideas.</div>
+        <div class="compare-divider"></div>
+        <div class="compare-us">THRIVE gives you a <em>launch path.</em></div>
+      </div>
+    </div>
+
+    <!-- ── Side-by-Side Comparison ── -->
+    <div class="comparison-intro reveal">
+      <h3>See <em>Exactly</em> What You're Getting.</h3>
+      <p>Every feature, side by side. No guessing — just a clear picture of what's included at each level.</p>
+    </div>
+
+    <div class="comparison-cards reveal">
+
+      <!-- ESSENTIALS CARD -->
+      <div class="comp-card">
+        <div class="comp-header">
+          <div class="comp-tier-label">THRIVE Essentials™</div>
+          <div class="comp-tier-name">Essentials</div>
+          <div class="comp-value-anchor">Valued at $2,500+</div>
+          <div class="comp-price">$897</div>
+          <div class="comp-price-note">Fast Action Price · Regular $997</div>
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Enroll in Essentials <span class="arrow">→</span></a>
+        </div>
+
+        <div class="comp-section-label">Complete Curriculum & Tools</div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Complete THRIVE Business Launch System</strong>The full roadmap from idea to launch.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>19 Business Launch Modules</strong>Action-oriented lessons for busy professionals.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>19 Business Launch Playbooks</strong>Quick-reference implementation guides.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Video + Audio Lessons</strong>Desktop or on-the-go dual-format learning.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>75+ Business Ideas Resource Library</strong>Pre-vetted ideas to eliminate overwhelm.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Done-For-You Templates & Frameworks</strong>Ready-to-use tools that save time.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>AI-Powered Entrepreneur Toolkit</strong>Leverage AI for marketing and growth.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Market Research & Validation Toolkit</strong>Validate demand before you build.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>30-Day Business Launch Roadmap</strong>A clear action plan to accelerate launch.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Lifetime Access + Future Updates</strong>Yours to keep as THRIVE grows.</div></div>
+
+        <div class="comp-section-label">Coaching & Community</div>
+        <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Live Weekly Group Coaching Calls</strong>Not included in Essentials.</div></div>
+        <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Exclusive Private Founder Community</strong>Not included in Essentials.</div></div>
+        <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Momentum & Accountability System</strong>Not included in Essentials.</div></div>
+        <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Direct VIP Coach & Mentor Access</strong>Not included in Essentials.</div></div>
+        <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Exclusive Business Referral Network</strong>Not included in Essentials.</div></div>
+        <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Exclusive THRIVE Resource Network</strong>Not included in Essentials.</div></div>
+        <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Complimentary Starter Website</strong>Not included in Essentials.</div></div>
+        <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Personal Launch Readiness Review</strong>Not included in Essentials.</div></div>
+
+        <div class="comp-footer">
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Enroll in Essentials <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- PREMIUM CARD -->
+      <div class="comp-card premium-col">
+        <div class="comp-header">
+          <div class="comp-tier-label">THRIVE Premium™</div>
+          <div class="comp-tier-name">Premium</div>
+          <div class="comp-value-anchor">Valued at $7,500+</div>
+          <div class="comp-price">$2,695</div>
+          <div class="comp-price-note">Fast Action Price · Regular $2,997</div>
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
+        </div>
+
+        <div class="comp-section-label">Complete Curriculum & Tools</div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Complete THRIVE Business Launch System</strong>Everything in Essentials included.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>19 Business Launch Modules</strong>Action-oriented lessons for busy professionals.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>19 Business Launch Playbooks</strong>Quick-reference implementation guides.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Video + Audio Lessons</strong>Desktop or on-the-go dual-format learning.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>75+ Business Ideas Resource Library</strong>Pre-vetted ideas to eliminate overwhelm.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Done-For-You Templates & Frameworks</strong>Ready-to-use tools that save time.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>AI-Powered Entrepreneur Toolkit</strong>Leverage AI for marketing and growth.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Market Research & Validation Toolkit</strong>Validate demand before you build.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>30-Day Business Launch Roadmap</strong>A clear action plan to accelerate launch.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Lifetime Access + Future Updates</strong>Yours to keep as THRIVE grows.</div></div>
+
+        <div class="comp-section-label">Coaching & Community</div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Live Weekly Group Coaching Calls <span class="comp-badge">LIVE</span></strong>12 weeks of real-time guidance, Q&amp;A, and implementation support.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Exclusive Private Founder Community <span class="comp-badge">EXCLUSIVE</span></strong>Connect with fellow builders taking action alongside you.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Momentum &amp; Accountability System</strong>Built-in structure to keep you focused and moving forward.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Direct VIP Coach &amp; Mentor Access <span class="comp-badge">VIP</span></strong>Submit questions for coaching sessions and office hours.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Exclusive Business Referral Network <span class="comp-badge">EXCLUSIVE</span></strong>Trusted providers, investors, patent attorneys, and specialists.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Exclusive THRIVE Resource Network <span class="comp-badge">EXCLUSIVE</span></strong>Visibility, strategic connections, and business exposure.</div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Complimentary Starter Website</strong>Professionally designed to establish your online presence. <em style="font-size:0.78em;opacity:0.6">Subject to eligibility.</em></div></div>
+        <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Personal Launch Readiness Review</strong>Your offer and plan reviewed before you go live.</div></div>
+
+        <div class="comp-footer">
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAST ACTION DISCOUNT ============== -->
+<section class="section-urgency" id="discount">
+  <div class="container">
+    <div class="urgency-inner">
+      <div class="eyebrow" style="justify-content:center; display:inline-flex; margin: 0 auto 1rem;">Limited Time</div>
+      <h2>Take <em>10% Off</em> Your Enrollment When You Act Now.</h2>
+      <p>Your business idea has already waited long enough. For a limited time, you can receive 10% off either THRIVE enrollment path.</p>
+
+      <div class="urgency-cards reveal">
+        <div class="urgency-card">
+          <div class="urgency-card-label">THRIVE Essentials™</div>
+          <div class="urgency-card-name">Essentials</div>
+          <div class="price-row">
+            <span class="price-was">$997</span>
+            <span class="price-now">$897</span>
+          </div>
+          <div class="savings-note">You save $100</div>
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost btn-full btn-sm">Claim Essentials Discount <span class="arrow">→</span></a>
+        </div>
+        <div class="urgency-card featured">
+          <div class="urgency-card-label">THRIVE Premium™</div>
+          <div class="urgency-card-name">Premium</div>
+          <div class="price-row">
+            <span class="price-was">$2,997</span>
+            <span class="price-now">$2,695</span>
+          </div>
+          <div class="savings-note">You save $300</div>
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary btn-full btn-sm">Claim Premium Discount <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SCHOLARSHIP ============== -->
+<section class="section-scholarship" id="scholarship">
+  <div class="container">
+    <div class="scholarship-inner">
+      <div class="eyebrow" style="justify-content:center; display:inline-flex; font-size:0.82rem; letter-spacing:0.18em; margin-bottom:1.5rem;">THRIVE Emerging Entrepreneur Scholarship</div>
+      <h2>The Opportunity <em>Someone Once Gave Me.</em></h2>
+
+      <!-- Gold stop-scroll statement -->
+      <div class="scholarship-stopper reveal">
+        "Financial barriers should never be the reason a great idea stays trapped."
+      </div>
+
+      <!-- Founder Note label -->
+      <div class="founder-note-label reveal">— A Note from the Founder —</div>
+
+      <!-- Story -->
+      <div class="scholarship-story reveal">
+        <p>There was a season in my life when I had lost my job, our car had been repossessed, and I wasn't sure how I would provide for my family.</p>
+        <p>Then someone believed in me.</p>
+        <p>A donated vehicle gave me transportation. A donated lawn mower gave me an opportunity. That opportunity became a business that helped support my family for more than twenty years.</p>
+        <p>Because of that experience, THRIVE is committed to creating opportunities for others who have the commitment, potential, and willingness to do the work.</p>
+        <p>I had the drive. I had the desire. What I did not have was the financial runway to get started. Someone gave me that runway. This scholarship is how we pay it forward.</p>
+        <div class="scholarship-sig-wrap">
+          <div class="founder-signature" style="font-size:2.8rem; color:var(--gold); font-family:'Dancing Script', cursive; line-height:1; margin-top:20px;">Rudy</div>
+          <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(247,243,236,0.45); margin-top:6px;">Rudy Bailey, MBA · Founder, THRIVE</div>
+        </div>
+      </div>
+
+      <!-- Joint Statement + Both Founders -->
+      <div class="scholarship-quote reveal">"Because we believe great ideas shouldn't remain trapped by temporary circumstances."</div>
+
+      <div class="founders-duo reveal">
+        <div class="founder-duo-item">
+          <img src="data:image/jpeg;base64,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" alt="Rudy Bailey" class="founder-duo-avatar" style="object-position:center top;" />
+          <div class="founder-duo-name">Rudy Bailey, MBA</div>
+          <div class="founder-duo-role">Founder · THRIVE</div>
+        </div>
+        <div class="founder-duo-item">
+          <img src="data:image/jpeg;base64,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" alt="Crystal Lugo" class="founder-duo-avatar" style="object-position:center center;" />
+          <div class="founder-duo-name">Crystal Lugo</div>
+          <div class="founder-duo-role">Co-Founder · THRIVE</div>
+        </div>
+      </div>
+      <p class="founders-together-line reveal">We built THRIVE because we've both lived the journey. We're here with you.</p>
+
+      <p class="scholarship-sub reveal" style="margin-top:2.5rem;">A limited number of THRIVE Emerging Entrepreneur Scholarships are available for aspiring business owners who demonstrate exceptional commitment, potential, and readiness to take action. Scholarship recipients receive reduced tuition in exchange for active participation and completion of program milestones.</p>
+
+      <div class="scholarship-form-embed reveal">
+<style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1781173");</style>
+    <style type="text/css">
+    /* LOADER */
+    .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .g-recaptcha {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    height: ;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    .ml-form-embedSubmitLoad:after {
+      content: " ";
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+    border-color: #ffffff #ffffff #ffffff transparent;
+    animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+    }
+    @keyframes ml-form-embedSubmitLoad {
+      0% {
+      transform: rotate(0deg);
+      }
+      100% {
+      transform: rotate(360deg);
+      }
+    }
+      #mlb2-42562111.ml-form-embedContainer {
+        box-sizing: border-box;
+        display: table;
+        margin: 0 auto;
+        position: static;
+        width: 100% !important;
+      }
+      #mlb2-42562111.ml-form-embedContainer h4,
+      #mlb2-42562111.ml-form-embedContainer p,
+      #mlb2-42562111.ml-form-embedContainer span,
+      #mlb2-42562111.ml-form-embedContainer button {
+        text-transform: none !important;
+        letter-spacing: normal !important;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper {
+        background-color: #f6f6f6;
+        
+        border-width: 0px;
+        border-color: transparent;
+        border-radius: 4px;
+        border-style: solid;
+        box-sizing: border-box;
+        display: inline-block !important;
+        margin: 0;
+        padding: 0;
+        position: relative;
+              }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper.embedPopup,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper.embedDefault { width: 400px; }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 400px; width: 100%; }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-align-left { text-align: left; }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-align-center { text-align: center; }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-align-default { display: table-cell !important; vertical-align: middle !important; text-align: center !important; }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-align-right { text-align: right; }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedHeader img {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        height: auto;
+        margin: 0 auto !important;
+        max-width: 100%;
+        width: undefinedpx;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
+        padding: 20px 20px 0 20px;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody.ml-form-embedBodyHorizontal {
+        padding-bottom: 0;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
+        text-align: left;
+        margin: 0 0 20px 0;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+        color: #000000;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        margin: 0 0 10px 0;
+        text-align: left;
+        word-break: break-word;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+        color: #000000;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 0 10px 0;
+        text-align: left;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ul,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ul,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol {
+        color: #000000;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol {
+        list-style-type: lower-alpha;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol ol,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol ol {
+        list-style-type: lower-roman;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p a,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
+        color: #000000;
+        text-decoration: underline;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group {
+        text-align: left!important;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label {
+        margin-bottom: 5px;
+        color: #333333;
+        font-size: 14px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-weight: bold; font-style: normal; text-decoration: none;;
+        display: inline-block;
+        line-height: 20px;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child {
+        margin: 0;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
+        margin: 0;
+        width: 100%;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+        margin: 0 0 20px 0;
+        width: 100%;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+        float: left;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent.horozintalForm {
+        margin: 0;
+        padding: 0 0 20px 0;
+        width: 100%;
+        height: auto;
+        float: left;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
+        margin: 0 0 10px 0;
+        width: 100%;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item {
+        margin: 0;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-formfieldHorizintal {
+        margin: 0;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        border-color: #cccccc;
+        border-radius: 4px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        height: auto;
+        line-height: 21px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #333333; }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #333333; }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #333333; }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder { color: #333333; }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow textarea, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow textarea {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        border-color: #cccccc;
+        border-radius: 4px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        height: auto;
+        line-height: 21px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+          border-color: #cccccc!important;
+          background-color: #ffffff!important;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input.custom-control-input[type="checkbox"]{
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+        border-radius: 4px!important;
+      }
+
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input:checked~.custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before  {
+          border-color: #000000!important;
+          background-color: #000000!important;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::after {
+           top: 2px;
+           box-sizing: border-box;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+           top: 0px!important;
+           box-sizing: border-box!important;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+        top: 0px!important;
+           box-sizing: border-box!important;
+      }
+
+       #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after {
+            top: 0px!important;
+            box-sizing: border-box!important;
+            position: absolute;
+            left: -1.5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            content: "";
+       }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before {
+        top: 0px!important;
+        box-sizing: border-box!important;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::before {
+          position: absolute;
+          top: 4px;
+          left: -1.5rem;
+          display: block;
+          width: 16px;
+          height: 16px;
+          pointer-events: none;
+          content: "";
+          background-color: #ffffff;
+          border: #adb5bd solid 1px;
+          border-radius: 50%;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::after {
+          position: absolute;
+          top: 2px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+          position: absolute;
+          top: 4px;
+          left: -1.5rem;
+          display: block;
+          width: 16px;
+          height: 16px;
+          pointer-events: none;
+          content: "";
+          background-color: #ffffff;
+          border: #adb5bd solid 1px;
+          border-radius: 50%;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after {
+          position: absolute;
+          top: 0px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+          position: absolute;
+          top: 0px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-radio .custom-control-label::after {
+          background: no-repeat 50%/50% 50%;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-checkbox .custom-control-label::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+          background: no-repeat 50%/50% 50%;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-control, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-control {
+        position: relative;
+        display: block;
+        min-height: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+          box-sizing: border-box;
+          padding: 0;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label {
+          color: #000000;
+          font-size: 12px!important;
+          font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+          line-height: 22px;
+          margin-bottom: 0;
+          position: relative;
+          vertical-align: top;
+          font-style: normal;
+          font-weight: 700;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-select, #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-select {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        border-color: #cccccc;
+        border-radius: 4px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        line-height: 20px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 28px 10px 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        background: url('https://assets.mlcdn.com/ml/images/default/dropdown.svg') no-repeat right .75rem center/8px 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow {
+        height: auto;
+        width: 100%;
+        float: left;
+      }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 70%; float: left; }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal { width: 30%; float: left; }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn { padding-top: 25px;  }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .horizontal-fields { box-sizing: border-box; float: left; padding-right: 10px;  }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input {
+        background-color: #ffffff;
+        color: #333333;
+        border-color: #cccccc;
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 10px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-y: initial;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button {
+        background-color: #000000 !important;
+        border-color: #000000;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        box-shadow: none;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        font-weight: 700;
+        line-height: 20px;
+        margin: 0 !important;
+        padding: 10px !important;
+        width: 100%;
+        height: auto;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button:hover {
+        background-color: #333333 !important;
+        border-color: #333333 !important;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description {
+        color: #000000;
+        display: block;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        text-align: left;
+        margin-bottom: 0;
+        position: relative;
+        vertical-align: top;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label {
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        display: block;
+        min-height: 24px;
+        padding-left: 24px;
+
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a {
+        color: #000000;
+        text-decoration: underline;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p {
+        color: #000000 !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
+        font-size: 12px !important;
+        font-weight: normal !important;
+        line-height: 18px !important;
+        padding: 0 !important;
+        margin: 0 5px 0 0 !important;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p:last-child {
+        margin: 0;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+        margin: 0 0 20px 0;
+        float: left;
+        width: 100%;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+        background-color: #000000 !important;
+        border: none !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        line-height: 21px !important;
+        height: auto;
+        padding: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading {
+        display: none;
+      }
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+        background-color: #333333 !important;
+      }
+      .ml-subscribe-close {
+        width: 30px;
+        height: 30px;
+        background: url('https://assets.mlcdn.com/ml/images/default/modal_close.png') no-repeat;
+        background-size: 30px;
+        cursor: pointer;
+        margin-top: -10px;
+        margin-right: -10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .ml-error input, .ml-error textarea, .ml-error select {
+        border-color: red!important;
+      }
+
+      .ml-error .custom-checkbox-radio-list {
+        border: 1px solid red !important;
+        border-radius: 4px;
+        padding: 10px;
+      }
+
+      .ml-error .label-description,
+      .ml-error .label-description p,
+      .ml-error .label-description p a,
+      .ml-error label:first-child {
+        color: #ff0000 !important;
+      }
+
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p,
+      #mlb2-42562111.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p:first-letter {
+        color: #ff0000 !important;
+      }
+            @media only screen and (max-width: 400px){
+
+        .ml-form-embedWrapper.embedDefault, .ml-form-embedWrapper.embedPopup { width: 100%!important; }
+        .ml-form-formContent.horozintalForm { float: left!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow { height: auto!important; width: 100%!important; float: left!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 100%!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal > div { padding-right: 0px!important; padding-bottom: 10px; }
+        .ml-form-formContent.horozintalForm .ml-button-horizontal { width: 100%!important; }
+        .ml-form-formContent.horozintalForm .ml-button-horizontal.labelsOn { padding-top: 0px!important; }
+
+      }
+    </style>
+
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+      
+        
+        
+      
+
+      
+        
+        
+      
+
+      
+
+            
+            
+            
+            
+            
+            
+      
+
+      
+
+      
+        
+        
+         
+        
+        
+      
+
+        
+        
+        
+        
+        
+        
+      
+
+       
+
+        
+        
+        
+        
+        
+        
+        
+       
+
+
+      
+        
+        
+        
+        
+  
+
+
+
+  
+        
+        
+        
+      
+
+
+      
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+        
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+      
+
+       
+
+        
+        
+        
+        
+       
+
+       
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+        
+        
+       
+
+    
+
+    
+
+
+      
+
+
+      
+
+      
+      
+
+      
+
+      
+
+
+
+
+
+    
+
+      
+    <div id="mlb2-42562111" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42562111">
+      <div class="ml-form-align-center ">
+        <div class="ml-form-embedWrapper embedForm">
+
+          
+          
+
+          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+
+            <div class="ml-form-embedContent" style=" ">
+              
+                <h4>THRIVE EMERGING SCHOLARSHIP OPPORTUNITY</h4>
+                <p>APPLICATION FORM</p>
+              
+            </div>
+
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2410569/forms/190163103024940237/subscribe" data-code="" method="post" target="_blank">
+              <div class="ml-form-formContent">
+                
+
+                  
+                  <div class="ml-form-fieldRow ">
+                    <div class="ml-field-group ml-field-name ml-validate-required">
+
+                      <label>Name</label>
+
+
+                      <!-- input -->
+                      <input aria-label="name" aria-required="true" type="text" class="form-control" data-inputmask="" name="fields[name]" placeholder="" autocomplete="given-name">
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div><div class="ml-form-fieldRow ">
+                    <div class="ml-field-group ml-field-last_name ml-validate-required">
+
+                      <label>Last name</label>
+
+
+                      <!-- input -->
+                      <input aria-label="last_name" aria-required="true" type="text" class="form-control" data-inputmask="" name="fields[last_name]" placeholder="" autocomplete="family-name">
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div><div class="ml-form-fieldRow ">
+                    <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+
+                      <label>Email</label>
+
+
+                      <!-- input -->
+                      <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="" autocomplete="email">
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div><div class="ml-form-fieldRow ">
+                    <div class="ml-field-group ml-field-phone ml-validate-required">
+
+                      <label>Phone</label>
+
+
+                      <!-- input -->
+                      <input aria-label="phone" aria-required="true" type="text" class="form-control" data-inputmask="" name="fields[phone]" placeholder="" autocomplete="">
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div><div class="ml-form-fieldRow ">
+                    <div class="ml-field-group ml-field-company ml-validate-required">
+
+                      <label>1. Briefly tell us about the business you would like to start.</label>
+
+
+                      <!-- input -->
+                      
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      <textarea class="form-control" name="fields[company]" aria-label="company" aria-required="true" maxlength="1024" placeholder=""></textarea>
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div><div class="ml-form-fieldRow ">
+                    <div class="ml-field-group ml-field-country ml-validate-required">
+
+                      <label>2.  Why is starting this business or developing this idea important to you?</label>
+
+
+                      <!-- input -->
+                      
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      <textarea class="form-control" name="fields[country]" aria-label="country" aria-required="true" maxlength="1024" placeholder=""></textarea>
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div><div class="ml-form-fieldRow ">
+                    <div class="ml-field-group ml-field-city ml-validate-required">
+
+                      <label>3. Briefly describe your financial situation and/or the factors preventing  you from enrolling at either of the tuition rates?</label>
+
+
+                      <!-- input -->
+                      
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      <textarea class="form-control" name="fields[city]" aria-label="city" aria-required="true" maxlength="1024" placeholder=""></textarea>
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div><div class="ml-form-fieldRow ml-last-item">
+                    <div class="ml-field-group ml-field-state ml-validate-required">
+
+                      <label>Acknowledgement: I understand that submission of this application does not guarantee scholarship approval and that qualified applicants may be invited to participate in a brief Scholarship Review Call as part of the selection process.</label>
+
+
+                      <!-- input -->
+                      
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            <div class="custom-checkbox-radio-list">
+              <!-- Visible if current or any next has value -->
+              <div class="custom-control custom-checkbox">
+                <input name="fields[state][]" aria-label="state" aria-required="true" class="custom-control-input" type="checkbox" value="If selected, I am prepared to begin the program immediately." id="checkbox-42562111-73-0">
+                <label class="custom-control-label" for="checkbox-42562111-73-0">
+                  If selected, I am prepared to begin the program immediately.
+                </label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input name="fields[state][]" aria-label="state" aria-required="true" class="custom-control-input" type="checkbox" value="If selected, I am prepared to begin the program within 30 days." id="checkbox-42562111-73-1">
+                <label class="custom-control-label" for="checkbox-42562111-73-1">
+                  If selected, I am prepared to begin the program within 30 days.
+                </label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input name="fields[state][]" aria-label="state" aria-required="true" class="custom-control-input" type="checkbox" value="If selected, I am prepared to begin the program within 60 days." id="checkbox-42562111-73-2">
+                <label class="custom-control-label" for="checkbox-42562111-73-2">
+                  If selected, I am prepared to begin the program within 60 days.
+                </label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input name="fields[state][]" aria-label="state" aria-required="true" class="custom-control-input" type="checkbox" value="I am not sure." id="checkbox-42562111-73-3">
+                <label class="custom-control-label" for="checkbox-42562111-73-3">
+                  I am not sure.
+                </label>
+              </div>
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+            </div>
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div>
+                
+              </div>
+
+              
+
+              <!-- Privacy policy -->
+              
+              <!-- /Privacy policy -->
+
+              
+
+              
+
+              
+
+
+
+
+
+
+              
+              <input type="hidden" name="ml-submit" value="1">
+
+              <div class="ml-form-embedSubmit">
+                
+                  <button type="submit" class="primary">Submit</button>
+                
+                <button disabled="disabled" style="display: none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div>
+                  <span class="sr-only">Loading...</span>
+                </button>
+              </div>
+
+              
+              <input type="hidden" name="anticsrf" value="true">
+            </form>
+          </div>
+
+          <div class="ml-form-successBody row-success" style="display: none">
+
+            <div class="ml-form-successContent">
+              
+                <h4>Thank you!</h4>
+                
+                  <p>You have successfully joined our subscriber list.</p>
+                
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+  
+  <script>
+    function ml_webform_success_42562111() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-42562111 .row-success').show();
+      $('.ml-subscribe-form-42562111 .row-form').hide();
+    }
+      </script>
+  
+  
+      <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+        <script>
+            fetch("https://assets.mailerlite.com/jsonp/2410569/forms/190163103024940237/takel")
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="section-faq" id="faq">
+  <div class="container">
+    <div class="section-head reveal" style="max-width:760px; margin:0 auto;">
+      <div class="eyebrow">Common Questions</div>
+      <h2>Everything You Need to <em>Know.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Can I do this while working a full-time job? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Yes. THRIVE was designed for busy professionals, parents, and side-hustlers who have real responsibilities. The lessons are structured so you can move through the program in manageable steps without needing to quit your job or overhaul your life.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What if I don't have a business idea yet? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>You do not need to arrive with a fully formed business idea. THRIVE helps you identify, refine, validate, and shape your idea into something practical and launchable.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What if I am not tech-savvy? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>You do not need to be a technology expert. THRIVE focuses on practical business development, simple tools, and step-by-step implementation. Premium students also receive additional support and guidance through coaching.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What makes this different from YouTube? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>YouTube gives you scattered information. THRIVE gives you a structured business launch pathway, organized tools, implementation steps, and a clear progression from idea to launch.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What makes this different from ChatGPT or AI tools? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>AI can help generate ideas, but it cannot replace a proven framework, accountability, human feedback, community, lived experience, and guided implementation. THRIVE helps you know what to do, when to do it, and why it matters.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Should I choose Essentials or Premium? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Choose Essentials if you are a self-starter who wants the complete system and can implement independently. Choose Premium if you want coaching, accountability, feedback, and support as you build and launch.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Can I upgrade from Essentials to Premium later? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Yes. Essentials students may upgrade to Premium, subject to availability. If upgrading within the approved upgrade window, their Essentials tuition may be applied toward the Premium enrollment balance.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">How does the scholarship process work? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Scholarship applicants complete a short application sharing their business idea, motivation, current barriers, and commitment level. Scholarship seats are limited and awarded based on demonstrated readiness, potential, and commitment.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Is there a guarantee? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Yes. THRIVE includes a 30-day action-based guarantee. If you complete the required work and demonstrate implementation effort within the first 30 days, we will honor the guarantee according to the stated terms.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Are payment plans available? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Yes. We want to make sure cost is never the barrier between you and building something real. At checkout, a number of Buy Now, Pay Later (BNPL) options are available so you can get started today and spread your payments over time. Simply select your preferred payment option at the enrollment checkout page.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Who is this not for? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>THRIVE is not for someone looking for shortcuts, passive income promises, or instant results without effort. This program is for serious aspiring entrepreneurs who are willing to think clearly, do the work, and take consistent action.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="section-final-cta" id="final-cta">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center; display:inline-flex;">Your Move</div>
+    <h2>Your Next Step <em>Is Clear.</em></h2>
+    <p>You don't have to keep carrying the idea alone. Choose the THRIVE path that fits your season and start building with clarity.</p>
+    <div class="final-btn-grid reveal">
+      <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-secondary">Enroll in Essentials <span class="arrow">→</span></a>
+      <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
+      <a href="https://calendly.com/rudybaileyjr/15-minute-clarity-call" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Schedule a Clarity Call</a>
+      <a href="#scholarship" class="btn btn-gold-outline">Apply for Scholarship</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"><span>T</span></span> THRIVE</a>
+        <p>Built for people<br/>ready to move.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Enroll</h5>
+        <a href="#essentials">THRIVE Essentials™</a>
+        <a href="#premium">THRIVE Premium™</a>
+        <a href="#scholarship">Scholarship</a>
+        <a href="https://calendly.com/rudybaileyjr/15-minute-clarity-call">Clarity Call</a>
+      </div>
+      <div class="footer-col">
+        <h5>Program</h5>
+        <a href="index.html#program">The Program</a>
+        <a href="index.html#receive">What You Get</a>
+        <a href="index.html#mentors">Mentors</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="mailto:contact@thrive2dayleadership.com">contact@thrive2dayleadership.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 THRIVE Business Launch Accelerator™. All rights reserved.</div>
+      <div class="signature">Move. Build. Launch.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== STICKY CTA ============== -->
+<div class="sticky-enroll" id="stickyEnroll">
+  <div class="sticky-label">Ready to begin? <span>10% Fast Action Discount Active</span></div>
+  <a href="#essentials" class="btn btn-ghost btn-sm" style="color:var(--cream);border-color:rgba(247,243,236,0.3);">Essentials — $897</a>
+  <a href="#premium" class="btn btn-primary btn-sm">Premium — $2,695</a>
+</div>
+
+<script>
+/* ── Nav scroll ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── Sticky CTA ── */
+const stickyEnroll = document.getElementById('stickyEnroll');
+window.addEventListener('scroll', () => {
+  stickyEnroll.classList.toggle('visible', window.scrollY > 600);
+});
+
+/* ── Reveal on scroll ── */
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(el => io.observe(el));
+
+/* ── FAQ toggle ── */
+function toggleFaq(el) {
+  document.querySelectorAll('.faq-item').forEach(item => {
+    if (item !== el) item.classList.remove('open');
+  });
+  el.classList.toggle('open');
+}
+
+/* ── Mobile nav ── */
+const mobileToggle = document.getElementById('mobileToggle');
+if (mobileToggle) {
+  mobileToggle.addEventListener('click', () => {
+    document.querySelector('.nav-links').style.display =
+      document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex';
+  });
+}
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
