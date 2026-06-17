@@ -867,6 +867,47 @@ section { padding: 96px 0; }
   justify-content: center;
 }
 
+/* ── Scholarship Modal ── */
+.scholarship-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6,15,34,0.82);
+  backdrop-filter: blur(10px);
+}
+.scholarship-modal.open { display: flex; }
+.scholarship-modal-panel {
+  position: relative;
+  width: min(100%, 560px);
+  max-height: min(88vh, 900px);
+  overflow: auto;
+  background: var(--paper);
+  border: 1px solid var(--line-gold);
+  box-shadow: var(--shadow-deep);
+  padding: 28px 18px 22px;
+}
+.scholarship-modal-close {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(11,26,54,0.18);
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 /* ── Sticky CTA ── */
 .sticky-enroll {
   position: fixed;
@@ -1432,7 +1473,7 @@ footer {
     <p class="sub">Whether you're ready to launch with step-by-step guidance or want the full coaching and accountability experience, THRIVE gives you a proven business launch system built for real people with real responsibilities.</p>
     <div class="hero-btns">
       <a href="#essentials" class="btn btn-secondary">THRIVE Essentials™ — $997 <span class="arrow">→</span></a>
-      <a href="#premium" class="btn btn-primary">THRIVE Premium™ — $2,697 <span class="arrow">→</span></a>
+      <a href="#premium" class="btn btn-primary">THRIVE Premium™ — $2,997 <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -1496,7 +1537,7 @@ footer {
           <div class="busy-callout-label">Built for Busy Professionals</div>
           <p>THRIVE was intentionally designed for people balancing careers, families, responsibilities, and limited time. The focused lesson structure, business launch playbooks, dual-format learning experience, ready-to-use templates, frameworks, and implementation tools help accelerate progress without requiring you to spend hundreds of hours trying to figure everything out on your own.</p>
         </div>
-        <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-ghost btn-full">Enroll in Essentials <span class="arrow">→</span></a>
+        <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost btn-full">Enroll in Essentials <span class="arrow">→</span></a>
       </div>
 
       <!-- Premium -->
@@ -1508,7 +1549,7 @@ footer {
         <div class="price-block">
           <div class="price-regular" style="color:rgba(247,243,236,0.35)">Regular Price: $2,997</div>
           <div class="price-main">$2,697</div>
-          <div class="price-tag">Fast Action — $300 Off</div>
+          <div class="price-tag">Fast Action — 10% Off</div>
         </div>
         <div class="best-for">Best For</div>
         <div class="best-for-text">Entrepreneurs who want coaching, accountability, feedback, community, and support while launching.</div>
@@ -1567,7 +1608,7 @@ footer {
             </div>
           </div>
         </div>
-        <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-primary btn-full" style="margin-top:28px;">Enroll in Premium <span class="arrow">→</span></a>
+        <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary btn-full" style="margin-top:28px;">Enroll in Premium <span class="arrow">→</span></a>
       </div>
 
     </div>
@@ -1594,7 +1635,7 @@ footer {
           <li>You are comfortable implementing without direct coaching</li>
         </ul>
         <div style="margin-top:2rem;">
-          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Enroll in Essentials <span class="arrow">→</span></a>
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost btn-sm">Enroll in Essentials <span class="arrow">→</span></a>
         </div>
       </div>
       <div class="decision-card premium reveal">
@@ -1608,7 +1649,7 @@ footer {
           <li>You want the best chance of completing and launching</li>
         </ul>
         <div style="margin-top:2rem;">
-          <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Enroll in Premium <span class="arrow">→</span></a>
+          <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary btn-sm">Enroll in Premium <span class="arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -1668,7 +1709,7 @@ footer {
           <div class="comp-value-anchor">Valued at $2,500+</div>
           <div class="comp-price">$897</div>
           <div class="comp-price-note">Fast Action Price · Regular $997</div>
-          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Enroll in Essentials <span class="arrow">→</span></a>
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Enroll in Essentials <span class="arrow">→</span></a>
         </div>
 
         <div class="comp-section-label">Complete Curriculum & Tools</div>
@@ -1694,7 +1735,7 @@ footer {
         <div class="comp-row"><div class="comp-check no">✗</div><div class="comp-row-text dimmed"><strong>Personal Launch Readiness Review</strong>Not included in Essentials.</div></div>
 
         <div class="comp-footer">
-          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Enroll in Essentials <span class="arrow">→</span></a>
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Enroll in Essentials <span class="arrow">→</span></a>
         </div>
       </div>
 
@@ -1706,7 +1747,7 @@ footer {
           <div class="comp-value-anchor">Valued at $7,500+</div>
           <div class="comp-price">$2,697</div>
           <div class="comp-price-note">Fast Action Price · Regular $2,997</div>
-          <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
+          <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
         </div>
 
         <div class="comp-section-label">Complete Curriculum & Tools</div>
@@ -1732,7 +1773,7 @@ footer {
         <div class="comp-row"><div class="comp-check yes">✓</div><div class="comp-row-text"><strong>Personal Launch Readiness Review</strong>Your offer and plan reviewed before you go live.</div></div>
 
         <div class="comp-footer">
-          <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
+          <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
         </div>
       </div>
 
@@ -1757,7 +1798,7 @@ footer {
             <span class="price-now">$897</span>
           </div>
           <div class="savings-note">You save $100</div>
-          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-ghost btn-full btn-sm">Claim Essentials Discount <span class="arrow">→</span></a>
+          <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost btn-full btn-sm">Claim Essentials Discount <span class="arrow">→</span></a>
         </div>
         <div class="urgency-card featured">
           <div class="urgency-card-label">THRIVE Premium™</div>
@@ -1766,8 +1807,8 @@ footer {
             <span class="price-was">$2,997</span>
             <span class="price-now">$2,697</span>
           </div>
-          <div class="savings-note">You save $300</div>
-          <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-primary btn-full btn-sm">Claim Premium Discount <span class="arrow">→</span></a>
+          <div class="savings-note">You save $299</div>
+          <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary btn-full btn-sm">Claim Premium Discount <span class="arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -1821,7 +1862,120 @@ footer {
 
       <p class="scholarship-sub reveal" style="margin-top:2.5rem;">A limited number of THRIVE Emerging Entrepreneur Scholarships are available for aspiring business owners who demonstrate exceptional commitment, potential, and readiness to take action. Scholarship recipients receive reduced tuition in exchange for active participation and completion of program milestones.</p>
 
-      <div class="scholarship-form-embed reveal">
+      <a href="#scholarship-application" class="btn btn-gold-outline reveal" data-scholarship-open>Apply for Scholarship Consideration <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="section-faq" id="faq">
+  <div class="container">
+    <div class="section-head reveal" style="max-width:760px; margin:0 auto;">
+      <div class="eyebrow">Common Questions</div>
+      <h2>Everything You Need to <em>Know.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Can I do this while working a full-time job? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Yes. THRIVE was designed for busy professionals, parents, and side-hustlers who have real responsibilities. The lessons are structured so you can move through the program in manageable steps without needing to quit your job or overhaul your life.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What if I don't have a business idea yet? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>You do not need to arrive with a fully formed business idea. THRIVE helps you identify, refine, validate, and shape your idea into something practical and launchable.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What if I am not tech-savvy? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>You do not need to be a technology expert. THRIVE focuses on practical business development, simple tools, and step-by-step implementation. Premium students also receive additional support and guidance through coaching.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What makes this different from YouTube? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>YouTube gives you scattered information. THRIVE gives you a structured business launch pathway, organized tools, implementation steps, and a clear progression from idea to launch.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What makes this different from ChatGPT or AI tools? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>AI can help generate ideas, but it cannot replace a proven framework, accountability, human feedback, community, lived experience, and guided implementation. THRIVE helps you know what to do, when to do it, and why it matters.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Should I choose Essentials or Premium? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Choose Essentials if you are a self-starter who wants the complete system and can implement independently. Choose Premium if you want coaching, accountability, feedback, and support as you build and launch.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Can I upgrade from Essentials to Premium later? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Yes. Essentials students may upgrade to Premium, subject to availability. If upgrading within the approved upgrade window, their Essentials tuition may be applied toward the Premium enrollment balance.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">How does the scholarship process work? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Scholarship applicants complete a short application sharing their business idea, motivation, current barriers, and commitment level. Scholarship seats are limited and awarded based on demonstrated readiness, potential, and commitment.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Can you explain the 30-day money back guarantee? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Yes — and we want you to feel confident clicking that enroll button. THRIVE includes a 30-Day Action-Based Success Guarantee because we believe this program works when you work it. However, we ask that you genuinely engage — complete your core deliverables, show up for sessions, and demonstrate documented steps toward your launch within the first 30 days. Don't sweat it though — we believe great things can happen when you become part of the THRIVE community.<br><br>That is why we have put together a Participation Guide that spells out exactly what we are committed to delivering for you — and what we ask of you in return.<br><br>Full guarantee terms are outlined at checkout.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Are payment plans available? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Yes. We want to make sure cost is never the barrier between you and building something real. At checkout, a number of Buy Now, Pay Later (BNPL) options are available so you can get started today and spread your payments over time. Simply select your preferred payment option at the enrollment checkout page.<br><br>If neither enrollment option feels financially accessible right now, we encourage you to book a free 15-minute clarity call. We may be able to help you find a path forward that works for your situation.<br><br>Additionally, a limited number of THRIVE Emerging Entrepreneur Scholarships are available for aspiring business owners who demonstrate exceptional commitment, potential, and readiness to take action. If you believe you may qualify, we encourage you to apply — financial barriers should never be the reason a great idea stays trapped.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Who is this not for? <div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>THRIVE is not for someone looking for shortcuts, passive income promises, or instant results without effort. This program is for serious aspiring entrepreneurs who are willing to think clearly, do the work, and take consistent action.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="section-final-cta" id="final-cta">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center; display:inline-flex;">Your Move</div>
+    <h2>Your Next Step <em>Is Clear.</em></h2>
+    <p>You don't have to keep carrying the idea alone. Choose the THRIVE path that fits your season and start building with clarity.</p>
+    <div class="final-btn-grid reveal">
+      <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-secondary">Enroll in Essentials <span class="arrow">→</span></a>
+      <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
+      <a href="https://calendly.com/rudybaileyjr/15-minute-clarity-call" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Schedule a Clarity Call</a>
+      <a href="#scholarship-application" class="btn btn-gold-outline" data-scholarship-open>Apply for Scholarship</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"><span>T</span></span> THRIVE</a>
+        <p>Built for people<br/>ready to move.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Enroll</h5>
+        <a href="#essentials">THRIVE Essentials™</a>
+        <a href="#premium">THRIVE Premium™</a>
+        <a href="#scholarship">Scholarship</a>
+        <a href="https://calendly.com/rudybaileyjr/15-minute-clarity-call">Clarity Call</a>
+      </div>
+      <div class="footer-col">
+        <h5>Program</h5>
+        <a href="index.html#program">The Program</a>
+        <a href="index.html#receive">What You Get</a>
+        <a href="index.html#mentors">Mentors</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="mailto:contact@thrive2dayleadership.com">contact@thrive2dayleadership.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 THRIVE Business Launch Accelerator™. All rights reserved.</div>
+      <div class="signature">Move. Build. Launch.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== SCHOLARSHIP APPLICATION MODAL ============== -->
+<div class="scholarship-modal" id="scholarshipApplicationModal" aria-hidden="true">
+  <div class="scholarship-modal-panel" role="dialog" aria-modal="true" aria-label="Scholarship application">
+    <button type="button" class="scholarship-modal-close" id="scholarshipModalClose" aria-label="Close scholarship application">&times;</button>
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1781173");</style>
     <style type="text/css">
     /* LOADER */
@@ -3008,121 +3162,14 @@ footer {
         <script>
             fetch("https://assets.mailerlite.com/jsonp/2410569/forms/190163103024940237/takel")
         </script>
-      </div>
-    </div>
   </div>
-</section>
-
-<!-- ============== FAQ ============== -->
-<section class="section-faq" id="faq">
-  <div class="container">
-    <div class="section-head reveal" style="max-width:760px; margin:0 auto;">
-      <div class="eyebrow">Common Questions</div>
-      <h2>Everything You Need to <em>Know.</em></h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Can I do this while working a full-time job? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>Yes. THRIVE was designed for busy professionals, parents, and side-hustlers who have real responsibilities. The lessons are structured so you can move through the program in manageable steps without needing to quit your job or overhaul your life.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">What if I don't have a business idea yet? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>You do not need to arrive with a fully formed business idea. THRIVE helps you identify, refine, validate, and shape your idea into something practical and launchable.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">What if I am not tech-savvy? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>You do not need to be a technology expert. THRIVE focuses on practical business development, simple tools, and step-by-step implementation. Premium students also receive additional support and guidance through coaching.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">What makes this different from YouTube? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>YouTube gives you scattered information. THRIVE gives you a structured business launch pathway, organized tools, implementation steps, and a clear progression from idea to launch.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">What makes this different from ChatGPT or AI tools? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>AI can help generate ideas, but it cannot replace a proven framework, accountability, human feedback, community, lived experience, and guided implementation. THRIVE helps you know what to do, when to do it, and why it matters.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Should I choose Essentials or Premium? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>Choose Essentials if you are a self-starter who wants the complete system and can implement independently. Choose Premium if you want coaching, accountability, feedback, and support as you build and launch.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Can I upgrade from Essentials to Premium later? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>Yes. Essentials students may upgrade to Premium, subject to availability. If upgrading within the approved upgrade window, their Essentials tuition may be applied toward the Premium enrollment balance.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">How does the scholarship process work? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>Scholarship applicants complete a short application sharing their business idea, motivation, current barriers, and commitment level. Scholarship seats are limited and awarded based on demonstrated readiness, potential, and commitment.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Is there a guarantee? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>Yes. THRIVE includes a 30-day action-based guarantee. If you complete the required work and demonstrate implementation effort within the first 30 days, we will honor the guarantee according to the stated terms.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Are payment plans available? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>Yes. We want to make sure cost is never the barrier between you and building something real. At checkout, a number of Buy Now, Pay Later (BNPL) options are available so you can get started today and spread your payments over time. Simply select your preferred payment option at the enrollment checkout page.</p></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Who is this not for? <div class="faq-icon">+</div></div>
-        <div class="faq-a"><p>THRIVE is not for someone looking for shortcuts, passive income promises, or instant results without effort. This program is for serious aspiring entrepreneurs who are willing to think clearly, do the work, and take consistent action.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============== FINAL CTA ============== -->
-<section class="section-final-cta" id="final-cta">
-  <div class="container">
-    <div class="eyebrow" style="justify-content:center; display:inline-flex;">Your Move</div>
-    <h2>Your Next Step <em>Is Clear.</em></h2>
-    <p>You don't have to keep carrying the idea alone. Choose the THRIVE path that fits your season and start building with clarity.</p>
-    <div class="final-btn-grid reveal">
-      <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-secondary">Enroll in Essentials <span class="arrow">→</span></a>
-      <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-primary">Enroll in Premium <span class="arrow">→</span></a>
-      <a href="https://calendly.com/rudybaileyjr/15-minute-clarity-call" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,243,236,0.25);">Schedule a Clarity Call</a>
-      <a href="#scholarship" class="btn btn-gold-outline">Apply for Scholarship</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============== FOOTER ============== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="index.html" class="logo"><span class="logo-mark"><span>T</span></span> THRIVE</a>
-        <p>Built for people<br/>ready to move.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Enroll</h5>
-        <a href="#essentials">THRIVE Essentials™</a>
-        <a href="#premium">THRIVE Premium™</a>
-        <a href="#scholarship">Scholarship</a>
-        <a href="https://calendly.com/rudybaileyjr/15-minute-clarity-call">Clarity Call</a>
-      </div>
-      <div class="footer-col">
-        <h5>Program</h5>
-        <a href="index.html#program">The Program</a>
-        <a href="index.html#receive">What You Get</a>
-        <a href="index.html#mentors">Mentors</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <a href="mailto:contact@thrive2dayleadership.com">contact@thrive2dayleadership.com</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 THRIVE Business Launch Accelerator™. All rights reserved.</div>
-      <div class="signature">Move. Build. Launch.</div>
-    </div>
-  </div>
-</footer>
+</div>
 
 <!-- ============== STICKY CTA ============== -->
 <div class="sticky-enroll" id="stickyEnroll">
   <div class="sticky-label">Ready to begin? <span>10% Fast Action Discount Active</span></div>
-  <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="color:var(--cream);border-color:rgba(247,243,236,0.3);">Essentials — $897</a>
-  <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" data-checkout-link="true" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Premium — $2,697</a>
+  <a href="https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771171" class="btn btn-ghost btn-sm" style="color:var(--cream);border-color:rgba(247,243,236,0.3);">Essentials — $897</a>
+  <a href="https://Thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6772141" class="btn btn-primary btn-sm">Premium — $2,697</a>
 </div>
 
 <script>
@@ -3158,6 +3205,43 @@ function toggleFaq(el) {
   el.classList.toggle('open');
 }
 
+/* ── Scholarship application modal ── */
+const scholarshipModal = document.getElementById('scholarshipApplicationModal');
+const scholarshipModalClose = document.getElementById('scholarshipModalClose');
+
+function openScholarshipModal(e) {
+  if (e) e.preventDefault();
+  scholarshipModal.classList.add('open');
+  scholarshipModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeScholarshipModal() {
+  scholarshipModal.classList.remove('open');
+  scholarshipModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-scholarship-open]').forEach(link => {
+  link.addEventListener('click', openScholarshipModal);
+});
+
+if (scholarshipModalClose) {
+  scholarshipModalClose.addEventListener('click', closeScholarshipModal);
+}
+
+if (scholarshipModal) {
+  scholarshipModal.addEventListener('click', e => {
+    if (e.target === scholarshipModal) closeScholarshipModal();
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && scholarshipModal && scholarshipModal.classList.contains('open')) {
+    closeScholarshipModal();
+  }
+});
+
 /* ── Mobile nav ── */
 const mobileToggle = document.getElementById('mobileToggle');
 if (mobileToggle) {
@@ -3166,15 +3250,6 @@ if (mobileToggle) {
       document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex';
   });
 }
-
-/* ── Checkout links ── */
-document.querySelectorAll('[data-checkout-link="true"]').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.open(this.href, '_blank', 'noopener');
-  });
-});
 
 /* ── Smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
