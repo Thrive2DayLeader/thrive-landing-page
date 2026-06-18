@@ -856,6 +856,16 @@ section { padding: 120px 0; position: relative; }
   letter-spacing: -0.01em;
   font-variation-settings: "opsz" 144, "SOFT" 50;
 }
+.receive-item h4 .eligibility-note {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(247, 243, 236, 0.68);
+  letter-spacing: 0;
+}
 .receive-item p { font-size: 0.92rem; color: rgba(247, 243, 236, 0.6); line-height: 1.5; }
 
 .receive-footer {
@@ -1971,7 +1981,7 @@ footer {
         <span class="step">Path I.</span>
         <h3>Learn the system.</h3>
         <p>Register for the FREE Masterclass and see how builders move from concept to confidence.</p>
-        <a href="#masterclass" class="btn btn-ghost">Save My Seat <span class="arrow">→</span></a>
+        <a href="https://rgpconsultingllc.easywebinar.live/event-registration" class="btn btn-ghost">Save My Seat <span class="arrow">→</span></a>
       </div>
 
       <div class="choose-card reveal">
@@ -2079,7 +2089,7 @@ footer {
       </div>
       <div class="receive-item">
         <div class="icon">xvi</div>
-        <h4>FREE Starter Website</h4>
+        <h4>Complimentary Starter Website <span class="eligibility-note">(subject to eligibility requirements)</span></h4>
         <p>A professional online presence — ready when you launch.</p>
       </div>
     </div>
@@ -2134,13 +2144,6 @@ footer {
       </div>
     </div>
 
-    <div class="advantage-tease reveal">
-      <div class="text">
-        <strong>The Framework</strong>
-        Discover what THRIVE actually stands for — inside the FREE masterclass.
-      </div>
-      <a href="#masterclass" class="btn btn-primary">Unlock the Framework <span class="arrow">→</span></a>
-    </div>
   </div>
 </section>
 
@@ -2314,7 +2317,7 @@ footer {
         <span class="label">Curious what's possible?</span>
         <h3>Join the FREE <em>Masterclass.</em></h3>
         <p>Learn how builders go from concept to momentum — and see the THRIVE framework in action.</p>
-        <a href="#" class="btn btn-primary" onclick="openLeadPopup(event, 'masterclass')">Save My Free Seat <span class="arrow">→</span></a>
+        <a href="#" id="masterclass-cta" class="btn btn-primary" onclick="openLeadPopup(event, 'masterclass')">Save My Free Seat <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -2458,7 +2461,7 @@ footer {
       </div>
       <div class="footer-col">
         <h5>Start</h5>
-        <a href="#masterclass">Free Masterclass</a>
+        <a href="#masterclass-cta">Free Masterclass</a>
         <a href="#resource">Free Resource</a>
         <a href="#final">Enroll</a>
         <a href="#faq">FAQ</a>
