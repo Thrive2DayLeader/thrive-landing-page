@@ -1728,6 +1728,20 @@ footer {
   transition: border 0.3s;
 }
 .popup input:focus { outline: none; border-color: var(--gold); }
+.popup .lead-recaptcha {
+  min-height: 78px;
+  display: flex;
+  justify-content: center;
+}
+.popup .form-error {
+  display: none;
+  color: #9f2a2a;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+.popup .form-error.visible { display: block; }
 .popup .popup-code {
   margin-top: 16px;
   padding: 14px;
@@ -2499,6 +2513,8 @@ footer {
       <input type="text" placeholder="First name" required />
       <input type="text" placeholder="Last name" required />
       <input type="email" placeholder="Email address" required />
+      <div class="lead-recaptcha" data-mailerlite-recaptcha></div>
+      <p class="form-error" data-form-error>Please complete the reCAPTCHA before requesting the resource.</p>
       <button type="submit" class="btn btn-dark" style="margin-top:8px;">Send Me the Resource <span class="arrow">→</span></button>
     </form>
   </div>
@@ -2516,6 +2532,8 @@ footer {
       <input type="text" id="leadMagnetFirstName" placeholder="First name" autocomplete="given-name" required />
       <input type="text" id="leadMagnetLastName" placeholder="Last name" autocomplete="family-name" required />
       <input type="email" id="leadMagnetEmail" placeholder="Email address" required />
+      <div class="lead-recaptcha" data-mailerlite-recaptcha></div>
+      <p class="form-error" data-form-error>Please complete the reCAPTCHA before requesting the guide.</p>
       <button type="submit" class="btn btn-dark" style="margin-top:8px;" id="leadMagnetSubmitBtn">Send Me the Guide <span class="arrow">→</span></button>
     </form>
     <div id="leadMagnetSuccess" style="display:none; text-align:center; padding: 20px 0;">
@@ -2618,6 +2636,7 @@ function toggleFaq(el) {
 function openLeadPopup(e, type) {
   e.preventDefault();
   document.getElementById('leadMagnetPopup').classList.add('visible');
+  renderMailerLiteRecaptchas();
 }
 
 /* ============== EXIT POPUP ============== */
@@ -2626,6 +2645,7 @@ function showExitPopup() {
   if (exitShown) return;
   exitShown = true;
   document.getElementById('exitPopup').classList.add('visible');
+  renderMailerLiteRecaptchas();
 }
 document.addEventListener('mouseleave', (e) => {
   if (e.clientY < 5 && !exitShown && window.scrollY > 200) {
@@ -2670,56 +2690,117 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function openLeadMagnetPopup(e) {
   e.preventDefault();
   document.getElementById('leadMagnetPopup').classList.add('visible');
+  renderMailerLiteRecaptchas();
 }
 
 /* leadMagnet listeners moved into DOMContentLoaded */
 
-function submitMailerLiteContact(firstName, lastName, email) {
-  const iframeName = 'mailerliteHiddenFrame';
-  let iframe = document.querySelector(`iframe[name="${iframeName}"]`);
-  if (!iframe) {
-    iframe = document.createElement('iframe');
-    iframe.name = iframeName;
-    iframe.style.display = 'none';
-    iframe.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(iframe);
+const MAILERLITE_RECAPTCHA_SITE_KEY = '6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD';
+const MAILERLITE_LEAD_FORM_URL = 'https://assets.mailerlite.com/jsonp/2410569/forms/189469101875267486/subscribe';
+const mailerLiteRecaptchaWidgets = new Map();
+
+function onMailerLiteRecaptchaReady() {
+  renderMailerLiteRecaptchas();
+}
+
+function renderMailerLiteRecaptchas() {
+  if (!window.grecaptcha || typeof window.grecaptcha.render !== 'function') return;
+
+  document.querySelectorAll('[data-mailerlite-recaptcha]').forEach(container => {
+    if (mailerLiteRecaptchaWidgets.has(container)) return;
+    if (!container.offsetParent) return;
+
+    const widgetId = window.grecaptcha.render(container, {
+      sitekey: MAILERLITE_RECAPTCHA_SITE_KEY
+    });
+    mailerLiteRecaptchaWidgets.set(container, widgetId);
+  });
+}
+
+function getMailerLiteRecaptchaToken(form) {
+  renderMailerLiteRecaptchas();
+
+  const container = form.querySelector('[data-mailerlite-recaptcha]');
+  const widgetId = mailerLiteRecaptchaWidgets.get(container);
+  if (widgetId === undefined || !window.grecaptcha) return '';
+
+  return window.grecaptcha.getResponse(widgetId);
+}
+
+function resetMailerLiteRecaptcha(form) {
+  const container = form.querySelector('[data-mailerlite-recaptcha]');
+  const widgetId = mailerLiteRecaptchaWidgets.get(container);
+  if (widgetId !== undefined && window.grecaptcha) {
+    window.grecaptcha.reset(widgetId);
   }
+}
 
-  const form = document.createElement('form');
-  form.action = 'https://assets.mailerlite.com/jsonp/2410569/forms/189469101875267486/subscribe';
-  form.method = 'post';
-  form.target = iframeName;
-  form.style.display = 'none';
+function setFormError(form, message) {
+  const error = form.querySelector('[data-form-error]');
+  if (!error) return;
 
-  [
+  error.textContent = message;
+  error.classList.add('visible');
+}
+
+function clearFormError(form) {
+  const error = form.querySelector('[data-form-error]');
+  if (!error) return;
+
+  error.classList.remove('visible');
+}
+
+async function submitMailerLiteContact(firstName, lastName, email, recaptchaToken) {
+  const body = new URLSearchParams([
     ['fields[name]', firstName],
     ['fields[last_name]', lastName],
     ['fields[email]', email],
+    ['g-recaptcha-response', recaptchaToken],
     ['ml-submit', '1'],
     ['anticsrf', 'true']
-  ].forEach(([name, value]) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
-  });
+  ]);
 
-  document.body.appendChild(form);
-  form.submit();
-  document.body.removeChild(form);
+  const response = await fetch(MAILERLITE_LEAD_FORM_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body
+  });
+  const result = await response.json();
+
+  if (!response.ok || !result.success) {
+    throw new Error(result.message || 'MailerLite did not accept the submission.');
+  }
+
+  return result;
 }
 
-function handleLeadMagnetSubmit(e) {
+async function handleLeadMagnetSubmit(e) {
   e.preventDefault();
+  clearFormError(e.target);
+
   const firstName = document.getElementById('leadMagnetFirstName').value.trim();
   const lastName = document.getElementById('leadMagnetLastName').value.trim();
   const email = document.getElementById('leadMagnetEmail').value.trim();
   const btn = document.getElementById('leadMagnetSubmitBtn');
+  const recaptchaToken = getMailerLiteRecaptchaToken(e.target);
+
+  if (!recaptchaToken) {
+    setFormError(e.target, 'Please complete the reCAPTCHA before requesting the guide.');
+    return;
+  }
+
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  submitMailerLiteContact(firstName, lastName, email);
+  try {
+    await submitMailerLiteContact(firstName, lastName, email, recaptchaToken);
+  } catch (error) {
+    setFormError(e.target, error.message || 'Something went wrong. Please try again.');
+    resetMailerLiteRecaptcha(e.target);
+    btn.innerHTML = 'Send Me the Guide <span class="arrow">→</span>';
+    btn.disabled = false;
+    return;
+  }
 
   // Show success and trigger download simultaneously
   document.getElementById('leadMagnetForm').style.display = 'none';
@@ -2741,6 +2822,8 @@ function handleLeadMagnetSubmit(e) {
       document.getElementById('leadMagnetForm').style.display = 'block';
       document.getElementById('leadMagnetSuccess').style.display = 'none';
       document.getElementById('leadMagnetForm').reset();
+      clearFormError(document.getElementById('leadMagnetForm'));
+      resetMailerLiteRecaptcha(document.getElementById('leadMagnetForm'));
       btn.innerHTML = 'Send Me the Guide <span class="arrow">→</span>';
       btn.disabled = false;
     }, 500);
@@ -2748,14 +2831,28 @@ function handleLeadMagnetSubmit(e) {
 }
 
 /* ============== EXIT POPUP — wire to MailerLite ============== */
-function handlePopupSubmit(e) {
+async function handlePopupSubmit(e) {
   e.preventDefault();
+  clearFormError(e.target);
+
   const inputs = e.target.querySelectorAll('input');
   const firstName = inputs[0].value.trim();
   const lastName = inputs[1].value.trim();
   const email = inputs[2].value.trim();
+  const recaptchaToken = getMailerLiteRecaptchaToken(e.target);
 
-  submitMailerLiteContact(firstName, lastName, email);
+  if (!recaptchaToken) {
+    setFormError(e.target, 'Please complete the reCAPTCHA before requesting the resource.');
+    return;
+  }
+
+  try {
+    await submitMailerLiteContact(firstName, lastName, email, recaptchaToken);
+  } catch (error) {
+    setFormError(e.target, error.message || 'Something went wrong. Please try again.');
+    resetMailerLiteRecaptcha(e.target);
+    return;
+  }
 
   // Show confirmation in exit popup and provide the PDF without leaving the page.
   e.target.innerHTML = '<p style="color:var(--navy);text-align:center;padding:12px 0;font-weight:600;">✓ You\'re in! Your download is ready.</p><a href="files/THRIVE_The_Next_Big_Idea-MVP.pdf" class="btn btn-dark" download="THRIVE_The_Next_Big_Idea-MVP.pdf">Download PDF <span class="arrow">→</span></a>';
@@ -2773,6 +2870,7 @@ function handlePopupSubmit(e) {
 }
 
 </script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onMailerLiteRecaptchaReady&render=explicit" async defer></script>
 
 </body>
 </html>
