@@ -1859,10 +1859,7 @@ footer {
   <div class="hero-vignette"></div>
 
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      Founders Cohort Begins Monday, July 6
-    </div>
+    <!-- COHORT DATE UI: See COHORT-DATE.md before restoring. -->
 
     <h1>
       <span class="line">You don't need</span>
@@ -1883,14 +1880,6 @@ footer {
       <div class="hero-meta-item">
         <span class="label">Founders Discount</span>
         <span class="value">10% Off <span class="small">— Code <strong style="color:var(--gold)">THRIVE</strong></span></span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="label">Cohort Begins In</span>
-        <div class="countdown" id="heroCountdown">
-          <div class="countdown-unit"><div class="num" id="hd">--</div><div class="lbl">Days</div></div>
-          <div class="countdown-unit"><div class="num" id="hh">--</div><div class="lbl">Hrs</div></div>
-          <div class="countdown-unit"><div class="num" id="hm">--</div><div class="lbl">Min</div></div>
-        </div>
       </div>
     </div>
   </div>
@@ -2351,14 +2340,7 @@ footer {
       <a href="#" class="btn btn-secondary" onclick="openLeadMagnetPopup(event)">Download Resource</a>
     </div>
 
-    <div class="final-countdown" id="finalCountdown">
-      <div class="unit"><div class="num" id="fd">--</div><div class="lbl">Days</div></div>
-      <div class="unit"><div class="num" id="fh">--</div><div class="lbl">Hours</div></div>
-      <div class="unit"><div class="num" id="fm">--</div><div class="lbl">Minutes</div></div>
-      <div class="unit"><div class="num" id="fs">--</div><div class="lbl">Seconds</div></div>
-    </div>
-
-    <div style="margin-top:24px;font-size:11px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;font-weight:600;">Founders Cohort Begins July 6</div>
+    <!-- COHORT DATE UI: See COHORT-DATE.md before restoring. -->
 
     <div class="founder-banner">
       <span class="num">10% Off</span>
@@ -2580,50 +2562,6 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 reveals.forEach(el => io.observe(el));
-
-/* ============== COUNTDOWN ============== */
-// Target: Monday, July 6 of the current cohort year
-function getCohortDate() {
-  const now = new Date();
-  let year = now.getFullYear();
-  let target = new Date(year, 6, 6, 9, 0, 0); // July = month 6
-  if (target < now) {
-    target = new Date(year + 1, 6, 6, 9, 0, 0);
-  }
-  return target;
-}
-const cohortDate = getCohortDate();
-
-function updateCountdown() {
-  const now = new Date();
-  let diff = cohortDate - now;
-  if (diff < 0) diff = 0;
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-  const pad = (n) => String(n).padStart(2, '0');
-
-  const hd = document.getElementById('hd');
-  const hh = document.getElementById('hh');
-  const hm = document.getElementById('hm');
-  if (hd) hd.textContent = pad(days);
-  if (hh) hh.textContent = pad(hours);
-  if (hm) hm.textContent = pad(minutes);
-
-  const fd = document.getElementById('fd');
-  const fh = document.getElementById('fh');
-  const fm = document.getElementById('fm');
-  const fs = document.getElementById('fs');
-  if (fd) fd.textContent = pad(days);
-  if (fh) fh.textContent = pad(hours);
-  if (fm) fm.textContent = pad(minutes);
-  if (fs) fs.textContent = pad(seconds);
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
 
 /* ============== FAQ TOGGLE ============== */
 function toggleFaq(el) {
