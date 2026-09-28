@@ -1834,7 +1834,7 @@ footer {
       <a href="#mentors">Mentors</a>
       <a href="#receive">What You Get</a>
       <a href="#faq">FAQ</a>
-      <a href="thrive-enroll.html" class="nav-cta">Start Your Journey</a>
+      <a href="#apply" class="nav-cta" data-apply-now>Apply Now</a>
     </div>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1849,7 +1849,7 @@ footer {
   <a href="#receive">What You Get</a>
   <a href="#testimonials">Testimonials</a>
   <a href="#faq">FAQ</a>
-  <a href="thrive-enroll.html" class="btn btn-primary">Start Your Journey</a>
+  <a href="#apply" class="btn btn-primary" data-apply-now>Apply Now</a>
 </div>
 
 <!-- ============== HERO ============== -->
@@ -1999,7 +1999,7 @@ footer {
         <span class="step">Path III.</span>
         <h3>Ready to build.</h3>
         <p>Enroll in THRIVE and get full access — 12 weeks of VIP coaching, frameworks, and execution support.</p>
-        <a href="thrive-enroll.html" class="btn btn-primary">Enroll Now <span class="arrow">→</span></a>
+        <a href="#apply" class="btn btn-primary" data-apply-now>Apply Now <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -2481,7 +2481,7 @@ footer {
     Founders Cohort
     <span>10% Off · Code THRIVE</span>
   </div>
-  <a href="thrive-enroll.html" class="btn btn-primary">Start Your Journey</a>
+  <a href="#apply" class="btn btn-primary" data-apply-now>Apply Now</a>
 </div>
 
 <!-- ============== EXIT POPUP ============== -->
@@ -2810,5 +2810,24 @@ async function handlePopupSubmit(e) {
 </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onMailerLiteRecaptchaReady&render=explicit" async defer></script>
 
+
+<!-- ============== APPLY NOW → Calendly pop-up (keeps the booking link off the buttons) ============== -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>
+(function () {
+  var APPLY_URL = 'https://calendly.com/rudy-thrive2dayleadership/thrive-business-idea-launch-accelerator';
+  document.querySelectorAll('[data-apply-now]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
+        Calendly.initPopupWidget({ url: APPLY_URL });
+      } else {
+        window.open(APPLY_URL, '_blank', 'noopener');
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
