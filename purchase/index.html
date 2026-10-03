@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redirecting to checkout...</title>
+<title>Continue to checkout · THRIVE</title>
 <style>
   body {
     margin: 0;
@@ -24,14 +24,14 @@
 </head>
 <body>
 <main>
-  <h1>Redirecting to checkout...</h1>
-  <p>If you are not redirected automatically, choose your checkout below.</p>
+  <h1>Continue to checkout</h1>
+  <p>Use the link below to continue your enrollment.</p>
   <p><a id="checkoutLink" href="/thrive-enroll.html">Continue to enrollment</a></p>
 </main>
 <script>
 const checkouts = {
-  "6865580": "https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6865580",
-  "6771179": "https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771179",
+  "6865580": "https://sso.teachable.com/secure/2704529/checkout/6865580/thrive-business-launch-accelerator-life-coaching-program1?product_id=6865580",
+  "6771179": "https://sso.teachable.com/secure/2704529/checkout/6771179/thrive-business-launch-accelerator-life-coaching-program1?product_id=6771179",
   "6771171": "https://sso.teachable.com/secure/2704529/checkout/6771171/thrive-business-launch-accelerator-life-coaching-program1?product_id=6771171",
   "6772141": "https://sso.teachable.com/secure/2704529/checkout/6772141/thrive-business-launch-accelerator-life-coaching-program?product_id=6772141"
 };
@@ -40,7 +40,11 @@ const productId = new URLSearchParams(window.location.search).get("product_id");
 const target = checkouts[productId] || "/thrive-enroll.html";
 const checkoutLink = document.getElementById("checkoutLink");
 checkoutLink.href = target;
-window.location.replace(target);
+if (checkouts[productId]) {
+  checkoutLink.textContent = "Continue to secure checkout";
+}
+// Keep this page manual: Teachable may return visitors here, so an automatic
+// redirect could create a loop between the school domain and this page.
 </script>
 </body>
 </html>

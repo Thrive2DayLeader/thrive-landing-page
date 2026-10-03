@@ -30,8 +30,8 @@
 </main>
 <script>
 const checkouts = {
-  "6865580": "https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6865580",
-  "6771179": "https://thrive-business-launch-accelerator-life-coaching-program.teachable.com/purchase?product_id=6771179",
+  "6865580": "https://sso.teachable.com/secure/2704529/checkout/6865580/thrive-business-launch-accelerator-life-coaching-program1?product_id=6865580",
+  "6771179": "https://sso.teachable.com/secure/2704529/checkout/6771179/thrive-business-launch-accelerator-life-coaching-program1?product_id=6771179",
   "6771171": "https://sso.teachable.com/secure/2704529/checkout/6771171/thrive-business-launch-accelerator-life-coaching-program1?product_id=6771171",
   "6772141": "https://sso.teachable.com/secure/2704529/checkout/6772141/thrive-business-launch-accelerator-life-coaching-program?product_id=6772141"
 };
@@ -41,9 +41,12 @@ const productId = params.get("product_id");
 const checkout = checkouts[productId];
 
 if (window.location.pathname.replace(/\/$/, "") === "/purchase" && checkout) {
-  document.getElementById("message").textContent = "Redirecting to checkout...";
+  document.title = "Continue to checkout · THRIVE";
+  document.querySelector("h1").textContent = "Continue to checkout";
+  document.getElementById("message").textContent = "Use the link below to continue your enrollment.";
   document.getElementById("fallbackLink").href = checkout;
-  window.location.replace(checkout);
+  document.getElementById("fallbackLink").textContent = "Continue to secure checkout";
+  // Do not auto-redirect checkout requests: Teachable may send visitors back here.
 } else {
   window.location.replace("/thrive-enroll.html");
 }
